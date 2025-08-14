@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<item key="scw_hwspec" value="E:\kevin\myCode\microBlaze200-100"/>
-	<item key="sdx_program_fpga_view_bit_bmm_browse_key" value="E:\kevin\myCode\microBlaze200-100\vitisJson\syncMain\_ide\bitstream"/>
-	<item key="fpga_elf_mem_selection" value="E:\kevin\myCode\microBlaze200-100\vitisJson\syncMain\Debug"/>
-	<item key="soc_flash_files_selection" value="E:\kevin\myCode\microBlaze200-100\vitisJson\syncMain\_ide\bitstream"/>
+	<item key="sdx_program_fpga_view_bit_bmm_browse_key" value="E:\kevin\myCode\microBlaze100\vitisJson\syncMain\_ide\bitstream"/>
+	<item key="fpga_elf_mem_selection" value="E:\kevin\myCode\microBlaze100\vitisJson\syncMain\Debug"/>
+	<item key="soc_flash_files_selection" value="E:\kevin\myCode\microBlaze100\vitisJson\syncMain\_ide\bitstream"/>
+	<item key="scw_hwspec_file_selection" value="E:\kevin\myCode\microBlaze100"/>
 </section>
