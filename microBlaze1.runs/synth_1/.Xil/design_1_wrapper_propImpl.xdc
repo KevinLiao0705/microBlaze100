@@ -1,4 +1,4 @@
-set_property SRC_FILE_INFO {cfile:E:/kevin/myCode/microBlaze200-100/microBlaze1.srcs/constrs_1/new/top_pin.xdc rfile:../../../microBlaze1.srcs/constrs_1/new/top_pin.xdc id:1} [current_design]
+set_property SRC_FILE_INFO {cfile:E:/kevin/myCode/microBlaze100/microBlaze1.srcs/constrs_1/new/top_pin.xdc rfile:../../../microBlaze1.srcs/constrs_1/new/top_pin.xdc id:1} [current_design]
 set_property src_info {type:XDC file:1 line:11 export:INPUT save:INPUT read:READ} [current_design]
 set_property PACKAGE_PIN W19 [get_ports {sysClk50m}]
 set_property src_info {type:XDC file:1 line:18 export:INPUT save:INPUT read:READ} [current_design]

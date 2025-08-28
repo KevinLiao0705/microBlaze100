@@ -17,7 +17,7 @@ proc create_report { reportName command } {
   }
 }
 namespace eval ::optrace {
-  variable script "E:/kevin/myCode/microBlaze200-100/microBlaze1.runs/impl_1/design_1_wrapper.tcl"
+  variable script "E:/kevin/myCode/microBlaze100/microBlaze1.runs/impl_1/design_1_wrapper.tcl"
   variable category "vivado_impl"
 }
 
@@ -130,20 +130,20 @@ OPTRACE "create in-memory project" START { }
   set_param project.singleFileAddWarning.threshold 0
 OPTRACE "create in-memory project" END { }
 OPTRACE "set parameters" START { }
-  set_property webtalk.parent_dir E:/kevin/myCode/microBlaze200-100/microBlaze1.cache/wt [current_project]
-  set_property parent.project_path E:/kevin/myCode/microBlaze200-100/microBlaze1.xpr [current_project]
-  set_property ip_output_repo E:/kevin/myCode/microBlaze200-100/microBlaze1.cache/ip [current_project]
+  set_property webtalk.parent_dir E:/kevin/myCode/microBlaze100/microBlaze1.cache/wt [current_project]
+  set_property parent.project_path E:/kevin/myCode/microBlaze100/microBlaze1.xpr [current_project]
+  set_property ip_output_repo E:/kevin/myCode/microBlaze100/microBlaze1.cache/ip [current_project]
   set_property ip_cache_permissions {read write} [current_project]
   set_property XPM_LIBRARIES {XPM_CDC XPM_MEMORY} [current_project]
 OPTRACE "set parameters" END { }
 OPTRACE "add files" START { }
-  add_files -quiet E:/kevin/myCode/microBlaze200-100/microBlaze1.runs/synth_1/design_1_wrapper.dcp
+  add_files -quiet E:/kevin/myCode/microBlaze100/microBlaze1.runs/synth_1/design_1_wrapper.dcp
   set_msg_config -source 4 -id {BD 41-1661} -limit 0
   set_param project.isImplRun true
-  add_files E:/kevin/myCode/microBlaze200-100/microBlaze1.srcs/sources_1/bd/design_1/design_1.bd
+  add_files E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/bd/design_1/design_1.bd
   set_param project.isImplRun false
 OPTRACE "read constraints: implementation" START { }
-  read_xdc E:/kevin/myCode/microBlaze200-100/microBlaze1.srcs/constrs_1/new/top_pin.xdc
+  read_xdc E:/kevin/myCode/microBlaze100/microBlaze1.srcs/constrs_1/new/top_pin.xdc
 OPTRACE "read constraints: implementation" END { }
 OPTRACE "add files" END { }
 OPTRACE "link_design" START { }

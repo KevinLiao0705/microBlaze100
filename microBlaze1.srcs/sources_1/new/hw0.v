@@ -1137,7 +1137,7 @@ output:
     reg s1SyncSspaProtect_f;
     reg[5:0] s1SyncRfFreq;
     reg[19:0] s1VideoGateCommPathTime;
-    reg[15:0] s1SyncWgPulseWidth;
+    reg[19:0] s1SyncWgPulseWidth;
     reg[23:0] wgData;
     reg[15:0] s1SyncRespDelayTimeCnt;
     reg[15:0] s1SyncRespDelayTime;

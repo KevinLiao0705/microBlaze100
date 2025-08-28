@@ -1493,8 +1493,8 @@ void transBram(){
 
 	u8 emuDelay=0;			;//
 	u8 txCon_f=1;
-	u8 txSyncClkEn1_f = 1;
-	u8 txSyncClkEn2_f = 1;
+	u8 txSyncClkEn1_f = 0;
+	u8 txSyncClkEn2_f = 0;
 	//===================================
 	/*
 	  radiationOn_f:
