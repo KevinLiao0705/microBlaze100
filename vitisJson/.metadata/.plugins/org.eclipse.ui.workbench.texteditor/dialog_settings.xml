@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="transBram"/>
+		<item key="selection" value="paraSet"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="paraSet"/>
+			<item value="load"/>
+			<item value="main"/>
+			<item value="fpgaId"/>
+			<item value="radarSetSt"/>
+			<item value="app"/>
 			<item value="transBram"/>
 			<item value="transBra,"/>
 			<item value="TRANS"/>
 			<item value="sspaPower"/>
 			<item value="sspa"/>
 			<item value="loadTickCtr"/>
-			<item value="fpgaId"/>
 			<item value="radarData.pulseGenCh"/>
 			<item value="pusleSourceFrom"/>
 			<item value="bram"/>
-			<item value="emuSpPreDataGateOn_f"/>
-			<item value="radiationOn_f"/>
-			<item value="2004"/>
-			<item value="200b"/>
-			<item value="2008"/>
 		</list>
 		<list key="replacehistory">
 		</list>

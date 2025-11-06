@@ -2,18 +2,18 @@
 # Vivado v2022.2 (64-bit)
 # SW Build 3671981 on Fri Oct 14 05:00:03 MDT 2022
 # IP Build 3669848 on Fri Oct 14 08:30:02 MDT 2022
-# Start of session at: Fri Aug 15 19:18:10 2025
-# Process ID: 1736
+# Start of session at: Tue Sep 30 08:32:58 2025
+# Process ID: 20168
 # Current directory: E:/kevin/myCode/microBlaze100/microBlaze1.runs/design_1_hw0_0_0_synth_1
 # Command line: vivado.exe -log design_1_hw0_0_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source design_1_hw0_0_0.tcl
 # Log file: E:/kevin/myCode/microBlaze100/microBlaze1.runs/design_1_hw0_0_0_synth_1/design_1_hw0_0_0.vds
 # Journal file: E:/kevin/myCode/microBlaze100/microBlaze1.runs/design_1_hw0_0_0_synth_1\vivado.jou
-# Running On: DESKTOP-V5UHSH2, OS: Windows, CPU Frequency: 3792 MHz, CPU Physical cores: 8, Host memory: 17039 MB
+# Running On: DESKTOP-3AU9R2V, OS: Windows, CPU Frequency: 3418 MHz, CPU Physical cores: 16, Host memory: 68448 MB
 #-----------------------------------------------------------
 source design_1_hw0_0_0.tcl -notrace
 INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1704] No user IP repositories specified
-INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'D:/Xilinx202202/Vivado/2022.2/data/ip'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'D:/vitis/Vivado/2022.2/data/ip'.
 INFO: [IP_Flow 19-6924] IPCACHE: Running cache check for IP inst: design_1_hw0_0_0
 Command: synth_design -top design_1_hw0_0_0 -part xc7a100tlfgg484-2L -incremental_mode off -mode out_of_context
 Starting synth_design
@@ -22,122 +22,123 @@ INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a100
 INFO: [Device 21-403] Loading part xc7a100tlfgg484-2L
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 12752
-INFO: [Synth 8-11241] undeclared symbol 'REGCCE', assumed default net type 'wire' [D:/Xilinx202202/Vivado/2022.2/data/verilog/src/unimacro/BRAM_SINGLE_MACRO.v:2170]
-WARNING: [Synth 8-9400] empty statement in sequential block [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1477]
-INFO: [Synth 8-11241] undeclared symbol 'a_snd_clk', assumed default net type 'wire' [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1848]
-INFO: [Synth 8-11241] undeclared symbol 'a_snd_tx', assumed default net type 'wire' [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1857]
-INFO: [Synth 8-11241] undeclared symbol 'b_snd_clk', assumed default net type 'wire' [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1866]
-INFO: [Synth 8-11241] undeclared symbol 'b_snd_tx', assumed default net type 'wire' [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1875]
-INFO: [Synth 8-11241] undeclared symbol 'aSndRx', assumed default net type 'wire' [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1887]
-INFO: [Synth 8-11241] undeclared symbol 'bSndRx', assumed default net type 'wire' [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1897]
+INFO: [Synth 8-7075] Helper process launched with PID 13528
+INFO: [Synth 8-11241] undeclared symbol 'REGCCE', assumed default net type 'wire' [D:/vitis/Vivado/2022.2/data/verilog/src/unimacro/BRAM_SINGLE_MACRO.v:2170]
+WARNING: [Synth 8-9400] empty statement in sequential block [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1720]
+INFO: [Synth 8-11241] undeclared symbol 'a_snd_clk', assumed default net type 'wire' [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:2160]
+INFO: [Synth 8-11241] undeclared symbol 'a_snd_tx', assumed default net type 'wire' [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:2169]
+INFO: [Synth 8-11241] undeclared symbol 'b_snd_clk', assumed default net type 'wire' [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:2178]
+INFO: [Synth 8-11241] undeclared symbol 'b_snd_tx', assumed default net type 'wire' [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:2187]
+INFO: [Synth 8-11241] undeclared symbol 'aSndRx', assumed default net type 'wire' [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:2199]
+INFO: [Synth 8-11241] undeclared symbol 'bSndRx', assumed default net type 'wire' [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:2209]
 WARNING: [Synth 8-6901] identifier 'ramOutDataR' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:153]
-WARNING: [Synth 8-6901] identifier 'localPreDataGateTimeCnt' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:194]
-WARNING: [Synth 8-6901] identifier 'localWgPriTime' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:195]
-WARNING: [Synth 8-6901] identifier 'localWgRepeatCnt' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:196]
-WARNING: [Synth 8-6901] identifier 'localWgRepeatEnd' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:197]
-WARNING: [Synth 8-6901] identifier 'localWgSampleCnt' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:198]
-WARNING: [Synth 8-6901] identifier 'localWgSampleEnd' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:199]
-WARNING: [Synth 8-6901] identifier 'wgActTimeCnt' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:200]
-WARNING: [Synth 8-6901] identifier 'hostPreDataGate_f' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:201]
-WARNING: [Synth 8-6901] identifier 's1SyncWgPulseWidth' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:203]
-WARNING: [Synth 8-6901] identifier 's1SyncPreDataGate_f' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:204]
-WARNING: [Synth 8-6901] identifier 's1SyncPreDataGate_ff' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:205]
-WARNING: [Synth 8-6901] identifier 'wgClk_f' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:206]
-WARNING: [Synth 8-6901] identifier 'wgDataBit_f' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:207]
-WARNING: [Synth 8-6901] identifier 'wgTrig_f' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:208]
-WARNING: [Synth 8-6901] identifier 'wgRfout_f' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:209]
-WARNING: [Synth 8-6901] identifier 'wgTrigGate_f' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:210]
-WARNING: [Synth 8-6901] identifier 'wgTimeClk' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:211]
-WARNING: [Synth 8-6901] identifier 'hostVideoGateDelayTimeCnt' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:213]
-WARNING: [Synth 8-6901] identifier 'localPreDataGate_f' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:214]
-WARNING: [Synth 8-6901] identifier 'hostVideoGate_f' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:215]
-WARNING: [Synth 8-6901] identifier 's1VideoGateDelayTimeCnt' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:217]
-WARNING: [Synth 8-6901] identifier 's1SyncPreDataGate_f' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:218]
-WARNING: [Synth 8-6901] identifier 's1VideoGate_f' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:219]
-WARNING: [Synth 8-6901] identifier 's1SyncRespDelayTime' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:220]
-WARNING: [Synth 8-6901] identifier 's1CommDelayTime' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:222]
-WARNING: [Synth 8-6901] identifier 'memSaveBuf1' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:225]
-WARNING: [Synth 8-6901] identifier 'fpgaId' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:228]
-WARNING: [Synth 8-6901] identifier 'hostS1TxEnd_w' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:237]
-WARNING: [Synth 8-6901] identifier 'hostS1TxEnd_w' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:241]
-WARNING: [Synth 8-6901] identifier 'hostS1RxPack_w' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:242]
-WARNING: [Synth 8-6901] identifier 'hostS1RxPack_w' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:246]
-WARNING: [Synth 8-6901] identifier 'rxSysData1_pack_w' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:308]
-WARNING: [Synth 8-6901] identifier 'rxSysData1_data0_wb' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:311]
-WARNING: [Synth 8-6901] identifier 'rxSysData1_data1_wb' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:312]
-WARNING: [Synth 8-6901] identifier 'rxSysData1_data2_wb' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:313]
-WARNING: [Synth 8-6901] identifier 'rxSysData1_data3_wb' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:314]
-WARNING: [Synth 8-6901] identifier 'rxSysData1_pack_w' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:317]
-WARNING: [Synth 8-6901] identifier 'rxSysData1_pack_w' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:320]
-WARNING: [Synth 8-6901] identifier 'wgRfout_f' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:333]
-WARNING: [Synth 8-6901] identifier 'wgRfout_f' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-WARNING: [Synth 8-6901] identifier 'wgRfout_f' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:338]
-WARNING: [Synth 8-6901] identifier 's1SyncRfFreq' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:342]
-WARNING: [Synth 8-6901] identifier 'wgRfout_f' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:343]
-WARNING: [Synth 8-6901] identifier 'wgRfout_f' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:356]
-WARNING: [Synth 8-6901] identifier 'memSaveBuf1' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:372]
-WARNING: [Synth 8-6901] identifier 'memSaveBuf1' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:373]
-WARNING: [Synth 8-6901] identifier 's1SyncInhibit_f' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:524]
-WARNING: [Synth 8-6901] identifier 's1WgTrigGate_f' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:525]
-WARNING: [Synth 8-6901] identifier 'hostEmuRxDataBuf' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:560]
-WARNING: [Synth 8-6901] identifier 'hostEmuRxDataBuf' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:562]
-WARNING: [Synth 8-6901] identifier 'hostEmuRxDataBuf' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:564]
-WARNING: [Synth 8-6901] identifier 'hostEmuRxDataBuf' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:579]
-WARNING: [Synth 8-6901] identifier 'hostEmuRxDataBuf' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:581]
-WARNING: [Synth 8-6901] identifier 'hostEmuRxDataBuf' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:583]
-WARNING: [Synth 8-6901] identifier 'hostS1TxData_w' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:591]
-WARNING: [Synth 8-6901] identifier 's1EmuRxDataBuf' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:593]
-WARNING: [Synth 8-6901] identifier 's1EmuRxDataBuf' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:595]
-WARNING: [Synth 8-6901] identifier 's1EmuRxDataBuf' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:597]
-WARNING: [Synth 8-6901] identifier 'hostS1TxData_w' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:658]
-WARNING: [Synth 8-6901] identifier 'hostS2TxData_w' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:659]
-WARNING: [Synth 8-6901] identifier 'hostS1TxData_w' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:660]
-WARNING: [Synth 8-6901] identifier 'hostS2TxData_w' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:661]
-WARNING: [Synth 8-6901] identifier 'hostS1TxData_w' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:662]
-WARNING: [Synth 8-6901] identifier 'hostS2TxData_w' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:663]
-WARNING: [Synth 8-6901] identifier 'hostS1TxData_w' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:679]
-WARNING: [Synth 8-6901] identifier 'hostS1TxData_w' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:680]
-WARNING: [Synth 8-6901] identifier 'hostS1TxData_w' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:681]
-WARNING: [Synth 8-6901] identifier 'hostS1TxData_w' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:682]
-WARNING: [Synth 8-6901] identifier 'hostTxSerial' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:719]
-WARNING: [Synth 8-6901] identifier 'hostTxSerial' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:734]
-WARNING: [Synth 8-6901] identifier 's1CommDelayTime' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:848]
-WARNING: [Synth 8-6901] identifier 's2CommDelayTime' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:850]
-WARNING: [Synth 8-6901] identifier 'hostS1RxPack_w' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:883]
-WARNING: [Synth 8-6901] identifier 'hostS1RxData0_wb' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:884]
-WARNING: [Synth 8-6901] identifier 'hostS2RxPack_w' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:916]
-WARNING: [Synth 8-6901] identifier 'hostS2RxData0_wb' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:917]
-WARNING: [Synth 8-6901] identifier 'hostS1RxData0_wb' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:963]
-WARNING: [Synth 8-6901] identifier 'hostS1RxData0_wb' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:964]
-WARNING: [Synth 8-6901] identifier 'hostS1RxData1_wb' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:979]
-WARNING: [Synth 8-6901] identifier 'hostS1RxData0_wb' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:979]
-WARNING: [Synth 8-6901] identifier 'hostS1RxData3_wb' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:980]
-WARNING: [Synth 8-6901] identifier 'hostS1RxData2_wb' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:980]
-WARNING: [Synth 8-6901] identifier 'hostS2RxData0_wb' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1042]
-WARNING: [Synth 8-6901] identifier 'hostS2RxData1_wb' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1049]
-WARNING: [Synth 8-6901] identifier 'hostS2RxData0_wb' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1049]
-WARNING: [Synth 8-6901] identifier 'hostS2RxData3_wb' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1050]
-WARNING: [Synth 8-6901] identifier 'hostS2RxData2_wb' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1050]
-WARNING: [Synth 8-6901] identifier 's1RxPack_w' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1149]
-WARNING: [Synth 8-6901] identifier 's1RxData0_wb' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1153]
-WARNING: [Synth 8-6901] identifier 's1RxData0_wb' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1155]
-WARNING: [Synth 8-6901] identifier 's1RxData2_wb' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1159]
-WARNING: [Synth 8-6901] identifier 's1RxData2_wb' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1160]
-WARNING: [Synth 8-6901] identifier 's1RxData2_wb' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1161]
-WARNING: [Synth 8-6901] identifier 's1RxData2_wb' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1162]
-WARNING: [Synth 8-6901] identifier 's1RxData3_wb' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1168]
-WARNING: [Synth 8-6901] identifier 'hostS1TxData_w' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1371]
-WARNING: [Synth 8-6901] identifier 'hostS1TxData_w' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1387]
-WARNING: [Synth 8-6901] identifier 's1RxPack_w' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1392]
-WARNING: [Synth 8-6901] identifier 'hostS1RxPack_w' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1393]
+WARNING: [Synth 8-6901] identifier 'localPreDataGateTimeCnt' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:246]
+WARNING: [Synth 8-6901] identifier 'localWgPriTime' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:247]
+WARNING: [Synth 8-6901] identifier 'localWgRepeatCnt' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:248]
+WARNING: [Synth 8-6901] identifier 'localWgRepeatEnd' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:249]
+WARNING: [Synth 8-6901] identifier 'localWgSampleCnt' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:250]
+WARNING: [Synth 8-6901] identifier 'localWgSampleEnd' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:251]
+WARNING: [Synth 8-6901] identifier 'wgActTimeCnt' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:252]
+WARNING: [Synth 8-6901] identifier 'hostPreDataGate_f' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:253]
+WARNING: [Synth 8-6901] identifier 's1SyncWgPulseWidth' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:255]
+WARNING: [Synth 8-6901] identifier 's1SyncPreDataGate_f' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:256]
+WARNING: [Synth 8-6901] identifier 's1SyncPreDataGate_ff' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:257]
+WARNING: [Synth 8-6901] identifier 'wgClk_f' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:258]
+WARNING: [Synth 8-6901] identifier 'wgDataBit_f' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:259]
+WARNING: [Synth 8-6901] identifier 'wgTrig_f' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:260]
+WARNING: [Synth 8-6901] identifier 'wgRfout_f' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:261]
+WARNING: [Synth 8-6901] identifier 'wgTrigGate_f' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:262]
+WARNING: [Synth 8-6901] identifier 'wgTimeClk' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:263]
+WARNING: [Synth 8-6901] identifier 'hostVideoGateDelayTimeCnt' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:265]
+WARNING: [Synth 8-6901] identifier 'localPreDataGate_f' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:266]
+WARNING: [Synth 8-6901] identifier 'hostVideoGate_f' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:267]
+WARNING: [Synth 8-6901] identifier 's1VideoGateDelayTimeCnt' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:269]
+WARNING: [Synth 8-6901] identifier 's1SyncPreDataGate_f' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:270]
+WARNING: [Synth 8-6901] identifier 's1VideoGate_f' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:271]
+WARNING: [Synth 8-6901] identifier 's1SyncRespDelayTime' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:272]
+WARNING: [Synth 8-6901] identifier 's1CommDelayTime' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:274]
+WARNING: [Synth 8-6901] identifier 'memSaveBuf1' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:277]
+WARNING: [Synth 8-6901] identifier 'fpgaId' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:280]
+WARNING: [Synth 8-6901] identifier 'hostS1TxEnd_w' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:292]
+WARNING: [Synth 8-6901] identifier 'hostS1TxEnd_w' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:296]
+WARNING: [Synth 8-6901] identifier 'hostS1RxPack_w' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:297]
+WARNING: [Synth 8-6901] identifier 'hostS1RxPack_w' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:304]
+WARNING: [Synth 8-6901] identifier 'hostS2TxEnd_w' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:319]
+WARNING: [Synth 8-6901] identifier 'hostS2TxEnd_w' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:323]
+WARNING: [Synth 8-6901] identifier 'hostS2RxPack_w' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:324]
+WARNING: [Synth 8-6901] identifier 'hostS2RxPack_w' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:331]
+WARNING: [Synth 8-6901] identifier 'rxSysData1_pack_w' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:418]
+WARNING: [Synth 8-6901] identifier 'rxSysData1_data0_wb' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:421]
+WARNING: [Synth 8-6901] identifier 'rxSysData1_data1_wb' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:422]
+WARNING: [Synth 8-6901] identifier 'rxSysData1_data2_wb' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:423]
+WARNING: [Synth 8-6901] identifier 'rxSysData1_data3_wb' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:424]
+WARNING: [Synth 8-6901] identifier 'rxSysData1_pack_w' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:427]
+WARNING: [Synth 8-6901] identifier 'rxSysData1_pack_w' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:430]
+WARNING: [Synth 8-6901] identifier 'rxSysData2_pack_w' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:450]
+WARNING: [Synth 8-6901] identifier 'rxSysData2_data0_wb' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:453]
+WARNING: [Synth 8-6901] identifier 'rxSysData2_data1_wb' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:454]
+WARNING: [Synth 8-6901] identifier 'rxSysData2_data2_wb' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:455]
+WARNING: [Synth 8-6901] identifier 'rxSysData2_data3_wb' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:456]
+WARNING: [Synth 8-6901] identifier 'rxSysData2_pack_w' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:459]
+WARNING: [Synth 8-6901] identifier 'rxSysData2_pack_w' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:462]
+WARNING: [Synth 8-6901] identifier 'rxSysData3_pack_w' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:482]
+WARNING: [Synth 8-6901] identifier 'rxSysData3_data0_wb' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:485]
+WARNING: [Synth 8-6901] identifier 'rxSysData3_data1_wb' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:486]
+WARNING: [Synth 8-6901] identifier 'rxSysData3_data2_wb' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:487]
+WARNING: [Synth 8-6901] identifier 'rxSysData3_data3_wb' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:488]
+WARNING: [Synth 8-6901] identifier 'rxSysData3_pack_w' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:491]
+WARNING: [Synth 8-6901] identifier 'rxSysData3_pack_w' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:494]
+WARNING: [Synth 8-6901] identifier 'rxSysData4_pack_w' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:514]
+WARNING: [Synth 8-6901] identifier 'rxSysData4_data0_wb' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:517]
+WARNING: [Synth 8-6901] identifier 'rxSysData4_data1_wb' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:518]
+WARNING: [Synth 8-6901] identifier 'rxSysData4_data2_wb' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:519]
+WARNING: [Synth 8-6901] identifier 'rxSysData4_data3_wb' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:520]
+WARNING: [Synth 8-6901] identifier 'rxSysData4_pack_w' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:523]
+WARNING: [Synth 8-6901] identifier 'rxSysData4_pack_w' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:526]
+WARNING: [Synth 8-6901] identifier 'wgRfout_f' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:540]
+WARNING: [Synth 8-6901] identifier 'wgRfout_f' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+WARNING: [Synth 8-6901] identifier 'wgRfout_f' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:545]
+WARNING: [Synth 8-6901] identifier 's1SyncRfFreq' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:549]
+WARNING: [Synth 8-6901] identifier 'wgRfout_f' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:550]
+WARNING: [Synth 8-6901] identifier 'wgRfout_f' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:563]
+WARNING: [Synth 8-6901] identifier 'memSaveBuf1' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:579]
+WARNING: [Synth 8-6901] identifier 'memSaveBuf1' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:580]
+WARNING: [Synth 8-6901] identifier 's1SyncInhibit_f' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:734]
+WARNING: [Synth 8-6901] identifier 's1WgTrigGate_f' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:735]
+WARNING: [Synth 8-6901] identifier 'hostEmuRxDataBuf' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:775]
+WARNING: [Synth 8-6901] identifier 'hostEmuRxDataBuf' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:777]
+WARNING: [Synth 8-6901] identifier 'hostEmuRxDataBuf' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:779]
+WARNING: [Synth 8-6901] identifier 'hostEmuRxDataBuf' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:794]
+WARNING: [Synth 8-6901] identifier 'hostEmuRxDataBuf' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:796]
+WARNING: [Synth 8-6901] identifier 'hostEmuRxDataBuf' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:798]
+WARNING: [Synth 8-6901] identifier 'hostS1TxData_w' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:806]
+WARNING: [Synth 8-6901] identifier 's1EmuRxDataBuf' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:808]
+WARNING: [Synth 8-6901] identifier 's1EmuRxDataBuf' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:810]
+WARNING: [Synth 8-6901] identifier 's1EmuRxDataBuf' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:812]
+WARNING: [Synth 8-6901] identifier 'hostS1TxData_w' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:873]
+WARNING: [Synth 8-6901] identifier 'hostS2TxData_w' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:874]
+WARNING: [Synth 8-6901] identifier 'hostS1TxData_w' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:875]
+WARNING: [Synth 8-6901] identifier 'hostS2TxData_w' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:876]
+WARNING: [Synth 8-6901] identifier 'hostS1TxData_w' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:877]
+WARNING: [Synth 8-6901] identifier 'hostS2TxData_w' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:878]
+WARNING: [Synth 8-6901] identifier 'hostS1TxData_w' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:894]
+WARNING: [Synth 8-6901] identifier 'hostS1TxData_w' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:895]
+WARNING: [Synth 8-6901] identifier 'hostS1TxData_w' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:896]
+WARNING: [Synth 8-6901] identifier 'hostS1TxData_w' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:897]
+WARNING: [Synth 8-6901] identifier 'hostTxSerial' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:934]
+WARNING: [Synth 8-6901] identifier 'hostTxSerial' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:949]
+WARNING: [Synth 8-6901] identifier 's1CommDelayTime' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1063]
+WARNING: [Synth 8-6901] identifier 's2CommDelayTime' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1065]
+WARNING: [Synth 8-6901] identifier 'hostS1RxPack_w' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1098]
+WARNING: [Synth 8-6901] identifier 'hostS1RxData0_wb' is used before its declaration [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1099]
 INFO: [Common 17-14] Message 'Synth 8-6901' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1842.156 ; gain = 411.113
+Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 1839.023 ; gain = 408.812
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-6157] synthesizing module 'design_1_hw0_0_0' [e:/kevin/myCode/microBlaze100/microBlaze1.gen/sources_1/bd/design_1/ip/design_1_hw0_0_0/synth/design_1_hw0_0_0.v:53]
 INFO: [Synth 8-6157] synthesizing module 'hw0' [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:22]
-WARNING: [Synth 8-6090] variable 'hostS1TxCnt' is written by both blocking and non-blocking assignments, entire logic could be removed [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:248]
+WARNING: [Synth 8-6090] variable 'hostS1TxCnt' is written by both blocking and non-blocking assignments, entire logic could be removed [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:306]
+WARNING: [Synth 8-6090] variable 'hostS2TxCnt' is written by both blocking and non-blocking assignments, entire logic could be removed [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:333]
 INFO: [Synth 8-6157] synthesizing module 'TXPROC' [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/txproc.v:23]
 INFO: [Synth 8-6155] done synthesizing module 'TXPROC' (0#1) [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/txproc.v:23]
 INFO: [Synth 8-6157] synthesizing module 'RXPROC' [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/rxproc.v:23]
@@ -146,10 +147,10 @@ INFO: [Synth 8-6157] synthesizing module 'TXSYSDATA' [E:/kevin/myCode/microBlaze
 INFO: [Synth 8-6155] done synthesizing module 'TXSYSDATA' (0#1) [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/txData.v:23]
 INFO: [Synth 8-6157] synthesizing module 'RXSYSDATA' [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/rxSysData.v:23]
 INFO: [Synth 8-6155] done synthesizing module 'RXSYSDATA' (0#1) [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/rxSysData.v:23]
-INFO: [Synth 8-6157] synthesizing module 'OBUFDS' [D:/Xilinx202202/Vivado/2022.2/scripts/rt/data/unisim_comp.v:90676]
-INFO: [Synth 8-6155] done synthesizing module 'OBUFDS' (0#1) [D:/Xilinx202202/Vivado/2022.2/scripts/rt/data/unisim_comp.v:90676]
-INFO: [Synth 8-6157] synthesizing module 'IBUFDS' [D:/Xilinx202202/Vivado/2022.2/scripts/rt/data/unisim_comp.v:71342]
-INFO: [Synth 8-6155] done synthesizing module 'IBUFDS' (0#1) [D:/Xilinx202202/Vivado/2022.2/scripts/rt/data/unisim_comp.v:71342]
+INFO: [Synth 8-6157] synthesizing module 'OBUFDS' [D:/vitis/Vivado/2022.2/scripts/rt/data/unisim_comp.v:90676]
+INFO: [Synth 8-6155] done synthesizing module 'OBUFDS' (0#1) [D:/vitis/Vivado/2022.2/scripts/rt/data/unisim_comp.v:90676]
+INFO: [Synth 8-6157] synthesizing module 'IBUFDS' [D:/vitis/Vivado/2022.2/scripts/rt/data/unisim_comp.v:71342]
+INFO: [Synth 8-6155] done synthesizing module 'IBUFDS' (0#1) [D:/vitis/Vivado/2022.2/scripts/rt/data/unisim_comp.v:71342]
 INFO: [Synth 8-6155] done synthesizing module 'hw0' (0#1) [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:22]
 INFO: [Synth 8-6155] done synthesizing module 'design_1_hw0_0_0' (0#1) [e:/kevin/myCode/microBlaze100/microBlaze1.gen/sources_1/bd/design_1/ip/design_1_hw0_0_0/synth/design_1_hw0_0_0.v:53]
 WARNING: [Synth 8-6014] Unused sequential element rxbuf0_reg was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/rxproc.v:130]
@@ -159,99 +160,99 @@ WARNING: [Synth 8-6014] Unused sequential element txBitCnt_reg was removed.  [E:
 WARNING: [Synth 8-6014] Unused sequential element rxbuf0_reg was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/rxSysData.v:130]
 WARNING: [Synth 8-6014] Unused sequential element rxbuf1_reg was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/rxSysData.v:130]
 WARNING: [Synth 8-6014] Unused sequential element rxbuf2_reg was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/rxSysData.v:131]
-WARNING: [Synth 8-6014] Unused sequential element txDataTimeCnt_reg was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:260]
-WARNING: [Synth 8-6014] Unused sequential element testTxBuf_reg[3] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:264]
-WARNING: [Synth 8-6014] Unused sequential element testTxBuf_reg[2] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:264]
-WARNING: [Synth 8-6014] Unused sequential element testTxBuf_reg[1] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:264]
-WARNING: [Synth 8-6014] Unused sequential element testTxBuf_reg[0] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:264]
-WARNING: [Synth 8-6014] Unused sequential element testPreData_f_reg was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:270]
-WARNING: [Synth 8-6014] Unused sequential element localWgSampleChg_f_reg was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:425]
-WARNING: [Synth 8-6014] Unused sequential element localWgFlag_reg was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:454]
-WARNING: [Synth 8-6014] Unused sequential element spEmuWgFlag_reg was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:496]
-WARNING: [Synth 8-6014] Unused sequential element mem_reg[255] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1598]
-WARNING: [Synth 8-6014] Unused sequential element mem_reg[254] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1598]
-WARNING: [Synth 8-6014] Unused sequential element mem_reg[253] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1598]
-WARNING: [Synth 8-6014] Unused sequential element mem_reg[252] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1598]
-WARNING: [Synth 8-6014] Unused sequential element mem_reg[251] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1598]
-WARNING: [Synth 8-6014] Unused sequential element mem_reg[250] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1598]
-WARNING: [Synth 8-6014] Unused sequential element mem_reg[249] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1598]
-WARNING: [Synth 8-6014] Unused sequential element mem_reg[248] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1598]
-WARNING: [Synth 8-6014] Unused sequential element mem_reg[247] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1598]
-WARNING: [Synth 8-6014] Unused sequential element mem_reg[246] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1598]
-WARNING: [Synth 8-6014] Unused sequential element mem_reg[245] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1598]
-WARNING: [Synth 8-6014] Unused sequential element mem_reg[244] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1598]
-WARNING: [Synth 8-6014] Unused sequential element mem_reg[243] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1598]
-WARNING: [Synth 8-6014] Unused sequential element mem_reg[242] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1598]
-WARNING: [Synth 8-6014] Unused sequential element mem_reg[241] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1598]
-WARNING: [Synth 8-6014] Unused sequential element mem_reg[240] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1598]
-WARNING: [Synth 8-6014] Unused sequential element mem_reg[239] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1598]
-WARNING: [Synth 8-6014] Unused sequential element mem_reg[238] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1598]
-WARNING: [Synth 8-6014] Unused sequential element mem_reg[237] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1598]
-WARNING: [Synth 8-6014] Unused sequential element mem_reg[236] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1598]
-WARNING: [Synth 8-6014] Unused sequential element mem_reg[235] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1598]
-WARNING: [Synth 8-6014] Unused sequential element mem_reg[234] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1598]
-WARNING: [Synth 8-6014] Unused sequential element mem_reg[233] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1598]
-WARNING: [Synth 8-6014] Unused sequential element mem_reg[232] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1598]
-WARNING: [Synth 8-6014] Unused sequential element mem_reg[231] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1598]
-WARNING: [Synth 8-6014] Unused sequential element mem_reg[230] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1598]
-WARNING: [Synth 8-6014] Unused sequential element mem_reg[229] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1598]
-WARNING: [Synth 8-6014] Unused sequential element mem_reg[228] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1598]
-WARNING: [Synth 8-6014] Unused sequential element mem_reg[227] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1598]
-WARNING: [Synth 8-6014] Unused sequential element mem_reg[226] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1598]
-WARNING: [Synth 8-6014] Unused sequential element mem_reg[225] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1598]
-WARNING: [Synth 8-6014] Unused sequential element mem_reg[224] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1598]
-WARNING: [Synth 8-6014] Unused sequential element mem_reg[223] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1598]
-WARNING: [Synth 8-6014] Unused sequential element mem_reg[222] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1598]
-WARNING: [Synth 8-6014] Unused sequential element mem_reg[221] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1598]
-WARNING: [Synth 8-6014] Unused sequential element mem_reg[220] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1598]
-WARNING: [Synth 8-6014] Unused sequential element mem_reg[219] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1598]
-WARNING: [Synth 8-6014] Unused sequential element mem_reg[218] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1598]
-WARNING: [Synth 8-6014] Unused sequential element mem_reg[217] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1598]
-WARNING: [Synth 8-6014] Unused sequential element mem_reg[216] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1598]
-WARNING: [Synth 8-6014] Unused sequential element mem_reg[215] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1598]
-WARNING: [Synth 8-6014] Unused sequential element mem_reg[214] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1598]
-WARNING: [Synth 8-6014] Unused sequential element mem_reg[213] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1598]
-WARNING: [Synth 8-6014] Unused sequential element mem_reg[212] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1598]
-WARNING: [Synth 8-6014] Unused sequential element mem_reg[211] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1598]
-WARNING: [Synth 8-6014] Unused sequential element mem_reg[210] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1598]
-WARNING: [Synth 8-6014] Unused sequential element mem_reg[209] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1598]
-WARNING: [Synth 8-6014] Unused sequential element mem_reg[208] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1598]
-WARNING: [Synth 8-6014] Unused sequential element mem_reg[207] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1598]
-WARNING: [Synth 8-6014] Unused sequential element mem_reg[206] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1598]
-WARNING: [Synth 8-6014] Unused sequential element mem_reg[205] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1598]
-WARNING: [Synth 8-6014] Unused sequential element mem_reg[204] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1598]
-WARNING: [Synth 8-6014] Unused sequential element mem_reg[203] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1598]
-WARNING: [Synth 8-6014] Unused sequential element mem_reg[202] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1598]
-WARNING: [Synth 8-6014] Unused sequential element mem_reg[201] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1598]
-WARNING: [Synth 8-6014] Unused sequential element mem_reg[200] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1598]
-WARNING: [Synth 8-6014] Unused sequential element mem_reg[199] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1598]
-WARNING: [Synth 8-6014] Unused sequential element mem_reg[198] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1598]
-WARNING: [Synth 8-6014] Unused sequential element mem_reg[197] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1598]
-WARNING: [Synth 8-6014] Unused sequential element mem_reg[196] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1598]
-WARNING: [Synth 8-6014] Unused sequential element mem_reg[195] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1598]
-WARNING: [Synth 8-6014] Unused sequential element mem_reg[194] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1598]
-WARNING: [Synth 8-6014] Unused sequential element mem_reg[193] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1598]
-WARNING: [Synth 8-6014] Unused sequential element mem_reg[192] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1598]
-WARNING: [Synth 8-6014] Unused sequential element mem_reg[191] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1598]
-WARNING: [Synth 8-6014] Unused sequential element mem_reg[190] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1598]
-WARNING: [Synth 8-6014] Unused sequential element mem_reg[189] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1598]
-WARNING: [Synth 8-6014] Unused sequential element mem_reg[188] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1598]
-WARNING: [Synth 8-6014] Unused sequential element mem_reg[187] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1598]
-WARNING: [Synth 8-6014] Unused sequential element mem_reg[186] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1598]
-WARNING: [Synth 8-6014] Unused sequential element mem_reg[185] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1598]
-WARNING: [Synth 8-6014] Unused sequential element mem_reg[184] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1598]
-WARNING: [Synth 8-6014] Unused sequential element mem_reg[183] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1598]
-WARNING: [Synth 8-6014] Unused sequential element mem_reg[182] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1598]
-WARNING: [Synth 8-6014] Unused sequential element mem_reg[181] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1598]
-WARNING: [Synth 8-6014] Unused sequential element mem_reg[180] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1598]
-WARNING: [Synth 8-6014] Unused sequential element mem_reg[179] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1598]
-WARNING: [Synth 8-6014] Unused sequential element mem_reg[178] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1598]
-WARNING: [Synth 8-6014] Unused sequential element mem_reg[177] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1598]
-WARNING: [Synth 8-6014] Unused sequential element mem_reg[176] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1598]
-WARNING: [Synth 8-6014] Unused sequential element mem_reg[175] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1598]
-WARNING: [Synth 8-6014] Unused sequential element mem_reg[174] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1598]
-WARNING: [Synth 8-6014] Unused sequential element mem_reg[173] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1598]
-WARNING: [Synth 8-6014] Unused sequential element mem_reg[172] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1598]
+WARNING: [Synth 8-6014] Unused sequential element localWgSampleChg_f_reg was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:632]
+WARNING: [Synth 8-6014] Unused sequential element localWgFlag_reg was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:661]
+WARNING: [Synth 8-6014] Unused sequential element spEmuWgFlag_reg was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:703]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[255] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[254] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[253] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[252] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[251] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[250] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[249] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[248] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[247] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[246] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[245] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[244] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[243] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[242] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[241] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[240] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[239] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[238] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[237] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[236] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[235] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[234] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[233] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[232] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[231] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[230] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[229] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[228] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[227] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[226] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[225] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[224] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[223] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[222] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[221] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[220] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[219] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[218] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[217] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[216] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[215] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[214] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[213] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[212] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[211] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[210] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[209] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[208] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[207] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[206] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[205] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[204] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[203] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[202] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[201] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[200] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[199] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[198] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[197] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[196] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[195] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[194] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[193] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[192] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[191] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[190] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[189] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[188] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[187] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[186] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[185] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[184] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[183] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[182] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[181] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[180] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[179] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[178] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[177] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[176] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[175] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[174] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[173] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[172] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[171] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[170] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[169] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[168] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[167] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[166] was removed.  [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1841]
 INFO: [Common 17-14] Message 'Synth 8-6014' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 WARNING: [Synth 8-3848] Net bmem[255] in module/entity hw0 does not have driver. [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:130]
 WARNING: [Synth 8-3848] Net bmem[254] in module/entity hw0 does not have driver. [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:130]
@@ -413,18 +414,18 @@ WARNING: [Synth 8-7129] Port dfInN[4] in module hw0 is either unconnected or has
 WARNING: [Synth 8-7129] Port dfInN[3] in module hw0 is either unconnected or has no load
 WARNING: [Synth 8-7129] Port dfInN[2] in module hw0 is either unconnected or has no load
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 2027.855 ; gain = 596.812
+Finished RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 2027.785 ; gain = 597.574
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 2027.855 ; gain = 596.812
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 2045.703 ; gain = 615.492
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 2027.855 ; gain = 596.812
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 2045.703 ; gain = 615.492
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.242 . Memory (MB): peak = 2027.855 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.124 . Memory (MB): peak = 2057.766 ; gain = 0.000
 INFO: [Netlist 29-17] Analyzing 10 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
@@ -433,110 +434,112 @@ Processing XDC Constraints
 Initializing timing engine
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 2120.992 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 2159.414 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 8 instances were transformed.
   OBUFDS => OBUFDS_DUAL_BUF (INV, OBUFDS(x2)): 8 instances
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.501 . Memory (MB): peak = 2120.992 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.306 . Memory (MB): peak = 2159.445 ; gain = 0.031
 INFO: [Designutils 20-5008] Incremental synthesis strategy off
-INFO: [Synth 8-11241] undeclared symbol 'REGCCE', assumed default net type 'wire' [D:/Xilinx202202/Vivado/2022.2/data/verilog/src/unimacro/BRAM_SINGLE_MACRO.v:2170]
+INFO: [Synth 8-11241] undeclared symbol 'REGCCE', assumed default net type 'wire' [D:/vitis/Vivado/2022.2/data/verilog/src/unimacro/BRAM_SINGLE_MACRO.v:2170]
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:18 ; elapsed = 00:00:18 . Memory (MB): peak = 2120.992 ; gain = 689.949
+Finished Constraint Validation : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 2159.445 ; gain = 729.234
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a100tlfgg484-2L
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:18 ; elapsed = 00:00:18 . Memory (MB): peak = 2120.992 ; gain = 689.949
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 2159.445 ; gain = 729.234
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:18 ; elapsed = 00:00:18 . Memory (MB): peak = 2120.992 ; gain = 689.949
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 2159.445 ; gain = 729.234
 ---------------------------------------------------------------------------------
-WARNING: [Synth 8-327] inferring latch for variable 'rf2TxData_reg' [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:659]
-WARNING: [Synth 8-327] inferring latch for variable 'rf1TxData_reg' [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:658]
-WARNING: [Synth 8-327] inferring latch for variable 'fib1TxData_reg' [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:660]
-WARNING: [Synth 8-327] inferring latch for variable 'fib2TxData_reg' [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:661]
-WARNING: [Synth 8-327] inferring latch for variable 'fib3TxData_reg' [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:662]
-WARNING: [Synth 8-327] inferring latch for variable 'laChR_reg' [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1365]
-WARNING: [Synth 8-327] inferring latch for variable 's1RxIn_f_reg' [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:586]
-WARNING: [Synth 8-327] inferring latch for variable 'hostWgPreDataGate_f_reg' [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:629]
-WARNING: [Synth 8-327] inferring latch for variable 'chDelay_reg' [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:530]
-WARNING: [Synth 8-327] inferring latch for variable 'hostWgPulseWidth_reg' [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:630]
-WARNING: [Synth 8-327] inferring latch for variable 'hostS1RxIn_f_reg' [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:553]
-WARNING: [Synth 8-327] inferring latch for variable 'hostS2RxIn_f_reg' [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:572]
-WARNING: [Synth 8-327] inferring latch for variable 'hostWgRfFreq_reg' [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:631]
+WARNING: [Synth 8-327] inferring latch for variable 'rf2TxData_reg' [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:874]
+WARNING: [Synth 8-327] inferring latch for variable 'rf1TxData_reg' [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:873]
+WARNING: [Synth 8-327] inferring latch for variable 'fib1TxData_reg' [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:875]
+WARNING: [Synth 8-327] inferring latch for variable 'fib2TxData_reg' [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:876]
+WARNING: [Synth 8-327] inferring latch for variable 'fib3TxData_reg' [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:877]
+WARNING: [Synth 8-327] inferring latch for variable 'laChR_reg' [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:1608]
+WARNING: [Synth 8-327] inferring latch for variable 's1RxIn_f_reg' [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:801]
+WARNING: [Synth 8-327] inferring latch for variable 'hostWgPreDataGate_f_reg' [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:844]
+WARNING: [Synth 8-327] inferring latch for variable 'hostWgPulseWidth_reg' [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:845]
+WARNING: [Synth 8-327] inferring latch for variable 'hostS1RxIn_f_reg' [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:768]
+WARNING: [Synth 8-327] inferring latch for variable 'hostS2RxIn_f_reg' [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:787]
+WARNING: [Synth 8-327] inferring latch for variable 'rxSysData4_in_f_reg' [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:765]
+WARNING: [Synth 8-327] inferring latch for variable 'rxSysData3_in_f_reg' [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:764]
+WARNING: [Synth 8-327] inferring latch for variable 'rxSysData2_in_f_reg' [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:763]
+WARNING: [Synth 8-327] inferring latch for variable 'hostWgRfFreq_reg' [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:846]
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:24 ; elapsed = 00:00:24 . Memory (MB): peak = 2133.312 ; gain = 702.270
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:13 ; elapsed = 00:00:13 . Memory (MB): peak = 2159.445 ; gain = 729.234
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
 ---------------------------------------------------------------------------------
 Detailed RTL Component Info : 
 +---Adders : 
-	   2 Input   32 Bit       Adders := 5     
 	   3 Input   32 Bit       Adders := 2     
+	   2 Input   32 Bit       Adders := 5     
 	   3 Input   24 Bit       Adders := 10    
 	   2 Input   24 Bit       Adders := 4     
+	   2 Input   20 Bit       Adders := 2     
 	   3 Input   20 Bit       Adders := 3     
-	   2 Input   20 Bit       Adders := 1     
-	   2 Input   16 Bit       Adders := 7     
+	   2 Input   17 Bit       Adders := 1     
+	   2 Input   16 Bit       Adders := 10    
 	   2 Input   14 Bit       Adders := 2     
-	   2 Input   10 Bit       Adders := 11    
+	   2 Input   10 Bit       Adders := 17    
 	   2 Input    9 Bit       Adders := 5     
-	   2 Input    8 Bit       Adders := 11    
-	   2 Input    6 Bit       Adders := 19    
-	   2 Input    5 Bit       Adders := 17    
+	   2 Input    8 Bit       Adders := 14    
+	   2 Input    6 Bit       Adders := 28    
+	   2 Input    5 Bit       Adders := 20    
 	   2 Input    4 Bit       Adders := 1     
 +---XORs : 
 	   2 Input      6 Bit         XORs := 1     
 	   2 Input      1 Bit         XORs := 1     
 +---Registers : 
-	               32 Bit    Registers := 227   
+	               32 Bit    Registers := 228   
 	               28 Bit    Registers := 1     
-	               24 Bit    Registers := 8     
-	               20 Bit    Registers := 12    
-	               16 Bit    Registers := 230   
-	               10 Bit    Registers := 7     
+	               24 Bit    Registers := 10    
+	               20 Bit    Registers := 14    
+	               16 Bit    Registers := 310   
+	               11 Bit    Registers := 1     
+	               10 Bit    Registers := 10    
 	                9 Bit    Registers := 5     
-	                8 Bit    Registers := 20    
-	                6 Bit    Registers := 14    
+	                8 Bit    Registers := 26    
+	                6 Bit    Registers := 20    
 	                5 Bit    Registers := 13    
 	                4 Bit    Registers := 1     
-	                1 Bit    Registers := 64    
+	                1 Bit    Registers := 75    
 +---Muxes : 
-	  38 Input   32 Bit        Muxes := 1     
 	   3 Input   32 Bit        Muxes := 1     
 	   2 Input   28 Bit        Muxes := 2     
-	   2 Input   24 Bit        Muxes := 5     
 	   4 Input   24 Bit        Muxes := 2     
+	   2 Input   24 Bit        Muxes := 5     
 	   6 Input   24 Bit        Muxes := 1     
 	   4 Input   23 Bit        Muxes := 1     
 	   2 Input   20 Bit        Muxes := 8     
 	   3 Input   20 Bit        Muxes := 2     
+	   5 Input   20 Bit        Muxes := 1     
 	   4 Input   16 Bit        Muxes := 1     
-	   2 Input   16 Bit        Muxes := 152   
-	   3 Input   16 Bit        Muxes := 8     
-	   2 Input   10 Bit        Muxes := 8     
+	   2 Input   16 Bit        Muxes := 160   
+	   3 Input   16 Bit        Muxes := 14    
+	   2 Input   10 Bit        Muxes := 14    
 	   2 Input    9 Bit        Muxes := 2     
-	   2 Input    8 Bit        Muxes := 447   
-	   4 Input    8 Bit        Muxes := 3     
-	 256 Input    6 Bit        Muxes := 1     
-	   3 Input    6 Bit        Muxes := 7     
-	   2 Input    6 Bit        Muxes := 18    
+	   2 Input    8 Bit        Muxes := 480   
+	   3 Input    8 Bit        Muxes := 3     
+	   4 Input    8 Bit        Muxes := 2     
+	   3 Input    6 Bit        Muxes := 10    
+	   2 Input    6 Bit        Muxes := 27    
 	   2 Input    5 Bit        Muxes := 8     
 	   2 Input    4 Bit        Muxes := 3     
-	   4 Input    2 Bit        Muxes := 7     
+	   4 Input    2 Bit        Muxes := 10    
 	   2 Input    2 Bit        Muxes := 4     
-	   2 Input    1 Bit        Muxes := 209   
-	   3 Input    1 Bit        Muxes := 9     
-	   6 Input    1 Bit        Muxes := 1     
-	   4 Input    1 Bit        Muxes := 23    
-	   5 Input    1 Bit        Muxes := 1     
+	   2 Input    1 Bit        Muxes := 247   
+	   3 Input    1 Bit        Muxes := 7     
+	   4 Input    1 Bit        Muxes := 30    
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
 ---------------------------------------------------------------------------------
@@ -597,7 +600,7 @@ WARNING: [Synth 8-7129] Port dfInP[4] in module design_1_hw0_0_0 is either uncon
 WARNING: [Synth 8-7129] Port dfInP[3] in module design_1_hw0_0_0 is either unconnected or has no load
 INFO: [Common 17-14] Message 'Synth 8-7129' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:01:06 ; elapsed = 00:01:06 . Memory (MB): peak = 2184.395 ; gain = 753.352
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:30 ; elapsed = 00:00:32 . Memory (MB): peak = 2173.230 ; gain = 743.020
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
@@ -607,7 +610,7 @@ Distributed RAM: Preliminary Mapping Report (see note below)
 +-----------------+---------------+-----------+----------------------+--------------+
 |Module Name      | RTL Object    | Inference | Size (Depth x Width) | Primitives   | 
 +-----------------+---------------+-----------+----------------------+--------------+
-|design_1_hw0_0_0 | preTxTime_reg | Implied   | 2 x 24               | RAM32M x 12  | 
+|design_1_hw0_0_0 | preTxTime_reg | Implied   | 2 x 24               | RAM32M x 16  | 
 +-----------------+---------------+-----------+----------------------+--------------+
 
 Note: The table above is a preliminary report that shows the Distributed RAMs at the current stage of the synthesis flow. Some Distributed RAMs may be reimplemented as non Distributed RAM primitives later in the synthesis flow. Multiple instantiated RAMs are reported only once.
@@ -618,13 +621,13 @@ Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:11 ; elapsed = 00:01:11 . Memory (MB): peak = 2184.395 ; gain = 753.352
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:33 ; elapsed = 00:00:35 . Memory (MB): peak = 2173.230 ; gain = 743.020
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:01:11 ; elapsed = 00:01:11 . Memory (MB): peak = 2184.395 ; gain = 753.352
+Finished Timing Optimization : Time (s): cpu = 00:00:34 ; elapsed = 00:00:35 . Memory (MB): peak = 2173.230 ; gain = 743.020
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
@@ -634,7 +637,7 @@ Distributed RAM: Final Mapping Report
 +-----------------+---------------+-----------+----------------------+--------------+
 |Module Name      | RTL Object    | Inference | Size (Depth x Width) | Primitives   | 
 +-----------------+---------------+-----------+----------------------+--------------+
-|design_1_hw0_0_0 | preTxTime_reg | Implied   | 2 x 24               | RAM32M x 12  | 
+|design_1_hw0_0_0 | preTxTime_reg | Implied   | 2 x 24               | RAM32M x 16  | 
 +-----------------+---------------+-----------+----------------------+--------------+
 
 ---------------------------------------------------------------------------------
@@ -643,126 +646,109 @@ Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[36][3] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/bmem_reg[8][11] ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[36][2] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/bmem_reg[8][10] ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[36][1] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/bmem_reg[8][9] ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[36][0] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/bmem_reg[8][8] ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[5][23]__0 ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[5][23] ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[5][22]__0 ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[5][22] ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[5][21]__0 ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[5][21] ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[5][20]__0 ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[5][20] ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[5][19]__0 ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[5][19] ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[5][18]__0 ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[5][18] ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[5][17]__0 ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[5][17] ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[5][16]__0 ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[5][16] ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[5][15]__0 ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[5][15] ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[5][14]__0 ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[5][14] ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[5][13]__0 ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[5][13] ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[5][12]__0 ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[5][12] ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[5][11]__0 ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[5][11] ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[5][10]__0 ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[5][10] ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[5][9]__0 ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[5][9] ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[5][8]__0 ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[5][8] ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[5][7]__0 ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[5][7] ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[5][6]__0 ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[5][6] ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[5][5]__0 ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[5][5] ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[5][4]__0 ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[5][4] ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[5][3]__0 ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[5][3] ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[5][2]__0 ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[5][2] ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[5][1]__0 ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[5][1] ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[5][0]__0 ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[5][0] ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[6][15] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[6][15]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[6][14] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[6][14]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[6][13] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[6][13]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[6][12] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[6][12]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[6][11] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[6][11]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[6][10] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[6][10]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[6][9] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[6][9]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[6][8] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[6][8]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[6][7] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[6][7]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[6][6] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[6][6]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[6][5] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[6][5]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[6][4] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[6][4]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[6][3] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[6][3]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[6][2] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[6][2]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[6][1] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[6][1]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[6][0] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[6][0]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[8][31]__0 ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[8][31] ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[8][30]__0 ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[8][30] ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[8][29]__0 ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[8][29] ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[8][28]__0 ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[8][28] ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[8][27]__0 ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[8][27] ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[8][26]__0 ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[8][26] ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[8][25]__0 ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[8][25] ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[8][24]__0 ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[8][24] ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[8][23]__0 ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[8][23] ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[8][22]__0 ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[8][22] ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[8][21]__0 ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[8][21] ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[8][20]__0 ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[8][20] ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[8][19]__0 ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[8][19] ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[8][18]__0 ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[8][18] ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[8][17]__0 ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[8][17] ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[8][16]__0 ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[8][16] ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[8][15]__0 ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[8][15] ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[8][14]__0 ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[8][14] ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[8][13]__0 ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[8][13] ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[8][12]__0 ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[8][12] ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[8][11]__0 ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[8][11] ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[8][10]__0 ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[8][10] ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[8][9]__0 ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[8][9] ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[8][8]__0 ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[8][8] ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[8][7]__0 ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[8][7] ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[8][6]__0 ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[8][6] ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[8][5]__0 ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[8][5] ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[8][4]__0 ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[8][4] ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[8][3]__0 ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[8][3] ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[8][2]__0 ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[8][2] ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[8][1]__0 ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[8][1] ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[8][0]__0 ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[8][0] ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[4][23]__0 ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[4][23] ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[4][22]__0 ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[4][22] ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[4][21]__0 ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[4][21] ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[4][20]__0 ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[4][20] ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[4][19]__0 ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[4][19] ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[4][18]__0 ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[4][18] ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[4][17]__0 ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[4][17] ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[4][16]__0 ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[4][16] ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[4][15]__0 ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[4][15] ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[4][14]__0 ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[4][14] ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[4][13]__0 ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[4][13] ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[4][12]__0 ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[4][12] ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[4][11]__0 ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[4][11] ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[4][10]__0 ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[4][10] ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[4][9]__0 ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[4][9] ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[4][8]__0 ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[4][8] ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[4][7]__0 ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[4][7] ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[4][6]__0 ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[4][6] ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[4][5]__0 ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[4][5] ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[4][4]__0 ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[4][4] ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[4][3]__0 ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[4][3] ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[4][2]__0 ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[4][2] ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[4][1]__0 ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[4][1] ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
-INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[4][0]__0 ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[4][0] ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:334]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[14][23] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[14][23]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[14][22] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[14][22]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[14][21] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[14][21]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[14][20] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[14][20]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[14][19] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[14][19]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[14][18] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[14][18]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[14][17] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[14][17]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[14][16] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[14][16]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[14][15] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[14][15]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[14][14] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[14][14]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[14][13] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[14][13]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[14][12] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[14][12]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[14][11] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[14][11]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[14][10] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[14][10]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[14][9] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[14][9]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[14][8] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[14][8]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[14][7] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[14][7]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[14][6] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[14][6]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[14][5] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[14][5]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[14][4] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[14][4]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[14][3] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[14][3]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[14][2] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[14][2]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[14][1] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[14][1]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[14][0] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[14][0]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[20][31] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[20][31]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[20][30] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[20][30]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[20][29] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[20][29]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[20][28] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[20][28]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[20][27] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[20][27]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[20][26] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[20][26]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[20][25] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[20][25]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[20][24] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[20][24]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[20][23] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[20][23]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[20][22] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[20][22]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[20][21] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[20][21]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[20][20] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[20][20]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[20][19] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[20][19]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[20][18] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[20][18]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[20][17] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[20][17]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[20][16] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[20][16]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[20][15] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[20][15]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[20][14] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[20][14]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[20][13] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[20][13]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[20][12] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[20][12]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[20][11] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[20][11]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[20][10] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[20][10]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[20][9] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[20][9]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[20][8] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[20][8]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[20][7] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[20][7]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[20][6] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[20][6]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[20][5] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[20][5]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[20][4] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[20][4]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[20][3] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[20][3]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[20][2] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[20][2]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[20][1] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[20][1]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[20][0] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[20][0]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[21][31] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[21][31]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[21][30] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[21][30]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[21][29] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[21][29]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[21][28] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[21][28]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[21][27] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[21][27]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[21][26] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[21][26]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[21][25] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[21][25]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[21][24] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[21][24]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[21][23] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[21][23]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[21][22] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[21][22]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[21][21] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[21][21]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[21][20] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[21][20]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[21][19] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[21][19]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[21][18] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[21][18]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[21][17] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[21][17]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[21][16] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[21][16]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[21][15] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[21][15]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[21][14] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[21][14]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[21][13] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[21][13]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[21][12] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[21][12]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[21][11] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[21][11]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[21][10] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[21][10]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[21][9] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[21][9]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[21][8] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[21][8]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[21][7] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[21][7]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[21][6] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[21][6]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[21][5] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[21][5]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[21][4] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[21][4]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[21][3] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[21][3]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[21][2] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[21][2]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[21][1] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[21][1]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[21][0] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[21][0]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[22][31] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[22][31]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[22][30] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[22][30]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[22][29] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[22][29]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[22][28] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[22][28]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[22][27] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[22][27]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[22][26] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[22][26]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[22][25] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[22][25]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[22][24] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[22][24]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[22][23] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[22][23]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[22][22] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[22][22]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[22][21] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[22][21]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
+INFO: [Synth 8-5966] Removing register instance (\inst/rmem_reg[22][20] ) from module (design_1_hw0_0_0) as it has self-loop and (\inst/rmem_reg[22][20]__0 ) is actual driver [E:/kevin/myCode/microBlaze100/microBlaze1.srcs/sources_1/new/hw0.v:541]
 INFO: [Common 17-14] Message 'Synth 8-5966' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
-INFO: [Synth 8-3332] Sequential element (inst/hostWgPulseWidth_reg[15]) is unused and will be removed from module design_1_hw0_0_0.
-INFO: [Synth 8-3332] Sequential element (inst/hostWgPulseWidth_reg[14]) is unused and will be removed from module design_1_hw0_0_0.
-INFO: [Synth 8-3332] Sequential element (inst/hostWgPulseWidth_reg[13]) is unused and will be removed from module design_1_hw0_0_0.
-INFO: [Synth 8-3332] Sequential element (inst/hostWgPulseWidth_reg[12]) is unused and will be removed from module design_1_hw0_0_0.
-INFO: [Synth 8-3332] Sequential element (inst/hostWgPulseWidth_reg[11]) is unused and will be removed from module design_1_hw0_0_0.
-INFO: [Synth 8-3332] Sequential element (inst/hostWgPulseWidth_reg[10]) is unused and will be removed from module design_1_hw0_0_0.
-INFO: [Synth 8-3332] Sequential element (inst/hostWgPulseWidth_reg[9]) is unused and will be removed from module design_1_hw0_0_0.
-INFO: [Synth 8-3332] Sequential element (inst/hostWgPulseWidth_reg[8]) is unused and will be removed from module design_1_hw0_0_0.
-INFO: [Synth 8-3332] Sequential element (inst/hostWgPulseWidth_reg[7]) is unused and will be removed from module design_1_hw0_0_0.
-INFO: [Synth 8-3332] Sequential element (inst/hostWgPulseWidth_reg[6]) is unused and will be removed from module design_1_hw0_0_0.
-INFO: [Synth 8-3332] Sequential element (inst/hostWgPulseWidth_reg[5]) is unused and will be removed from module design_1_hw0_0_0.
-INFO: [Synth 8-3332] Sequential element (inst/hostWgPulseWidth_reg[4]) is unused and will be removed from module design_1_hw0_0_0.
-INFO: [Synth 8-3332] Sequential element (inst/hostWgPulseWidth_reg[3]) is unused and will be removed from module design_1_hw0_0_0.
-INFO: [Synth 8-3332] Sequential element (inst/hostWgPulseWidth_reg[2]) is unused and will be removed from module design_1_hw0_0_0.
-INFO: [Synth 8-3332] Sequential element (inst/hostWgPulseWidth_reg[1]) is unused and will be removed from module design_1_hw0_0_0.
-INFO: [Synth 8-3332] Sequential element (inst/hostWgPulseWidth_reg[0]) is unused and will be removed from module design_1_hw0_0_0.
-INFO: [Synth 8-3332] Sequential element (inst/hostWgPreDataGate_f_reg) is unused and will be removed from module design_1_hw0_0_0.
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:01:14 ; elapsed = 00:01:14 . Memory (MB): peak = 2184.395 ; gain = 753.352
+Finished Technology Mapping : Time (s): cpu = 00:00:35 ; elapsed = 00:00:37 . Memory (MB): peak = 2173.230 ; gain = 743.020
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -780,37 +766,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:01:18 ; elapsed = 00:01:19 . Memory (MB): peak = 2184.395 ; gain = 753.352
+Finished IO Insertion : Time (s): cpu = 00:00:37 ; elapsed = 00:00:39 . Memory (MB): peak = 2173.230 ; gain = 743.020
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:01:19 ; elapsed = 00:01:19 . Memory (MB): peak = 2184.395 ; gain = 753.352
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:37 ; elapsed = 00:00:39 . Memory (MB): peak = 2173.230 ; gain = 743.020
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:19 ; elapsed = 00:01:19 . Memory (MB): peak = 2184.395 ; gain = 753.352
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:38 ; elapsed = 00:00:39 . Memory (MB): peak = 2173.230 ; gain = 743.020
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:01:19 ; elapsed = 00:01:19 . Memory (MB): peak = 2184.395 ; gain = 753.352
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:38 ; elapsed = 00:00:39 . Memory (MB): peak = 2173.230 ; gain = 743.020
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:01:19 ; elapsed = 00:01:19 . Memory (MB): peak = 2184.395 ; gain = 753.352
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:38 ; elapsed = 00:00:39 . Memory (MB): peak = 2173.230 ; gain = 743.020
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:01:19 ; elapsed = 00:01:20 . Memory (MB): peak = 2184.395 ; gain = 753.352
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:38 ; elapsed = 00:00:40 . Memory (MB): peak = 2173.230 ; gain = 743.020
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
@@ -843,53 +829,53 @@ Report Cell Usage:
 +------+--------+------+
 |      |Cell    |Count |
 +------+--------+------+
-|1     |CARRY4  |   479|
-|2     |LUT1    |   852|
-|3     |LUT2    |   871|
-|4     |LUT3    |   515|
-|5     |LUT4    |  1030|
-|6     |LUT5    |   377|
-|7     |LUT6    |  2349|
-|8     |MUXF7   |   548|
-|9     |MUXF8   |   101|
-|10    |RAM32M  |    12|
+|1     |CARRY4  |   563|
+|2     |LUT1    |  1077|
+|3     |LUT2    |   806|
+|4     |LUT3    |   556|
+|5     |LUT4    |  1110|
+|6     |LUT5    |   711|
+|7     |LUT6    |  2500|
+|8     |MUXF7   |   678|
+|9     |MUXF8   |   166|
+|10    |RAM32M  |    16|
 |11    |SRLC32E |     8|
-|12    |FDRE    | 10972|
-|13    |FDSE    |    52|
-|14    |LD      |     5|
+|12    |FDRE    | 12637|
+|13    |FDSE    |    55|
+|14    |LD      |     7|
 |15    |LDC     |     6|
 |16    |IBUFDS  |     2|
 |17    |OBUFDS  |     8|
 +------+--------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:01:19 ; elapsed = 00:01:20 . Memory (MB): peak = 2184.395 ; gain = 753.352
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:38 ; elapsed = 00:00:40 . Memory (MB): peak = 2173.230 ; gain = 743.020
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 71 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:01:07 ; elapsed = 00:01:15 . Memory (MB): peak = 2184.395 ; gain = 660.215
-Synthesis Optimization Complete : Time (s): cpu = 00:01:20 ; elapsed = 00:01:20 . Memory (MB): peak = 2184.395 ; gain = 753.352
+Synthesis finished with 0 errors, 0 critical warnings and 73 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:31 ; elapsed = 00:00:37 . Memory (MB): peak = 2173.230 ; gain = 629.277
+Synthesis Optimization Complete : Time (s): cpu = 00:00:38 ; elapsed = 00:00:40 . Memory (MB): peak = 2173.230 ; gain = 743.020
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.152 . Memory (MB): peak = 2184.395 ; gain = 0.000
-INFO: [Netlist 29-17] Analyzing 1161 Unisim elements for replacement
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.076 . Memory (MB): peak = 2173.230 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 1446 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 1 inverter(s) to 1 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.021 . Memory (MB): peak = 2188.148 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.010 . Memory (MB): peak = 2173.230 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
-  A total of 31 instances were transformed.
-  LD => LDCE: 4 instances
+  A total of 37 instances were transformed.
+  LD => LDCE: 6 instances
   LD => LDCE (inverted pins: G): 1 instance 
   LDC => LDCE: 6 instances
   OBUFDS => OBUFDS_DUAL_BUF (INV, OBUFDS(x2)): 8 instances
-  RAM32M => RAM32M (RAMD32(x6), RAMS32(x2)): 12 instances
+  RAM32M => RAM32M (RAMD32(x6), RAMS32(x2)): 16 instances
 
-Synth Design complete, checksum: 623f6847
+Synth Design complete, checksum: ad90fcbf
 INFO: [Common 17-83] Releasing license: Synthesis
-167 Infos, 416 Warnings, 0 Critical Warnings and 0 Errors encountered.
+150 Infos, 419 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:01:25 ; elapsed = 00:01:26 . Memory (MB): peak = 2188.148 ; gain = 1150.781
+synth_design: Time (s): cpu = 00:00:41 ; elapsed = 00:00:43 . Memory (MB): peak = 2173.230 ; gain = 1136.836
 INFO: [Common 17-1381] The checkpoint 'E:/kevin/myCode/microBlaze100/microBlaze1.runs/design_1_hw0_0_0_synth_1/design_1_hw0_0_0.dcp' has been generated.
-INFO: [Coretcl 2-1648] Added synthesis output to IP cache for IP design_1_hw0_0_0, cache-ID = 4afbdb20b6bef6fe
-INFO: [Coretcl 2-1174] Renamed 9 cell refs.
+INFO: [Coretcl 2-1648] Added synthesis output to IP cache for IP design_1_hw0_0_0, cache-ID = 64ee8695739f60c3
+INFO: [Coretcl 2-1174] Renamed 12 cell refs.
 INFO: [Common 17-1381] The checkpoint 'E:/kevin/myCode/microBlaze100/microBlaze1.runs/design_1_hw0_0_0_synth_1/design_1_hw0_0_0.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file design_1_hw0_0_0_utilization_synth.rpt -pb design_1_hw0_0_0_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Fri Aug 15 19:19:49 2025...
+INFO: [Common 17-206] Exiting Vivado at Tue Sep 30 08:33:49 2025...

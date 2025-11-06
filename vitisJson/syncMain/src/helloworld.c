@@ -254,6 +254,8 @@ typedef struct radarDataSt
     sub1 mastPulseExist[24]			==  0:none 1:exist
     sub2 mastPulseExist[25]			==  0:none 1:exist
 
+    ctr pusleFrom[26]				==  0:remoute 1:local
+    ctr loadType[27]				==  0:dummyLoad 1:ant
 
 
     */
