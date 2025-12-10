@@ -1,8 +1,8 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2022.2 (win64) Build 3671981 Fri Oct 14 05:00:03 MDT 2022
-| Date         : Tue Sep 30 08:37:18 2025
-| Host         : DESKTOP-3AU9R2V running 64-bit major release  (build 9200)
+| Date         : Mon Dec  8 14:54:39 2025
+| Host         : DESKTOP-V5UHSH2 running 64-bit major release  (build 9200)
 | Command      : report_methodology -file design_1_wrapper_methodology_drc_routed.rpt -pb design_1_wrapper_methodology_drc_routed.pb -rpx design_1_wrapper_methodology_drc_routed.rpx
 | Design       : design_1_wrapper
 | Device       : xc7a100tlfgg484-2L
@@ -23,7 +23,7 @@ Table of Contents
           Floorplan: design_1
       Design limits: <entire design considered>
              Max violations: <unlimited>
-             Violations found: 1025
+             Violations found: 1030
 +-----------+------------------+--------------------------------+------------+
 | Rule      | Severity         | Description                    | Violations |
 +-----------+------------------+--------------------------------+------------+
@@ -31,7 +31,8 @@ Table of Contents
 | HPDR-2    | Warning          | Port pin INOUT inconsistency   | 14         |
 | LUTAR-1   | Warning          | LUT drives async reset alert   | 2          |
 | TIMING-9  | Warning          | Unknown CDC Logic              | 1          |
-| TIMING-20 | Warning          | Non-clocked latch              | 7          |
+| TIMING-16 | Warning          | Large setup violation          | 4          |
+| TIMING-20 | Warning          | Non-clocked latch              | 8          |
 | LATCH-1   | Advisory         | Existing latches in the design | 1          |
 +-----------+------------------+--------------------------------+------------+
 
@@ -5127,6 +5128,26 @@ Unknown CDC Logic
 One or more asynchronous Clock Domain Crossing has been detected between 2 clock domains through a set_false_path or a set_clock_groups or set_max_delay -datapath_only constraint but no double-registers logic synchronizer has been found on the side of the capture clock. It is recommended to run report_cdc for a complete and detailed CDC coverage. Please consider using XPM_CDC to avoid Critical severities
 Related violations: <none>
 
+TIMING-16#1 Warning
+Large setup violation  
+There is a large setup violation of -1.056 ns between design_1_i/microblaze_0/U0/MicroBlaze_Core_I/Performance.Core/Data_Flow_I/Operand_Select_I/EX_Branch_CMP_Op1_reg[0]/C (clocked by clk_out1_design_1_clk_wiz_1_0) and design_1_i/microblaze_0_local_memory/lmb_bram/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[24].ram.r/prim_noinit.ram/DEVICE_7SERIES.WITH_BMM_INFO.TRUE_DP.SIMPLE_PRIM36.TDP_SP36_NO_ECC_ATTR.ram/ADDRBWRADDR[8] (clocked by clk_out1_design_1_clk_wiz_1_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#2 Warning
+Large setup violation  
+There is a large setup violation of -1.090 ns between design_1_i/microblaze_0/U0/MicroBlaze_Core_I/Performance.Core/Data_Flow_I/Operand_Select_I/EX_Branch_CMP_Op1_reg[0]/C (clocked by clk_out1_design_1_clk_wiz_1_0) and design_1_i/microblaze_0_local_memory/lmb_bram/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[17].ram.r/prim_noinit.ram/DEVICE_7SERIES.WITH_BMM_INFO.TRUE_DP.SIMPLE_PRIM36.TDP_SP36_NO_ECC_ATTR.ram/ADDRBWRADDR[8] (clocked by clk_out1_design_1_clk_wiz_1_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#3 Warning
+Large setup violation  
+There is a large setup violation of -1.107 ns between design_1_i/microblaze_0/U0/MicroBlaze_Core_I/Performance.Core/Use_Debug_Logic.Master_Core.Debug_Perf/Performance_Debug_Control.dbg_stop_if_delay_i_reg_replica/C (clocked by clk_out1_design_1_clk_wiz_1_0) and design_1_i/microblaze_0_local_memory/lmb_bram/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[24].ram.r/prim_noinit.ram/DEVICE_7SERIES.WITH_BMM_INFO.TRUE_DP.SIMPLE_PRIM36.TDP_SP36_NO_ECC_ATTR.ram/ENARDEN (clocked by clk_out1_design_1_clk_wiz_1_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#4 Warning
+Large setup violation  
+There is a large setup violation of -1.288 ns between design_1_i/microblaze_0/U0/MicroBlaze_Core_I/Performance.Core/Data_Flow_I/Operand_Select_I/EX_Branch_CMP_Op1_reg[0]/C (clocked by clk_out1_design_1_clk_wiz_1_0) and design_1_i/microblaze_0_local_memory/lmb_bram/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[24].ram.r/prim_noinit.ram/DEVICE_7SERIES.WITH_BMM_INFO.TRUE_DP.SIMPLE_PRIM36.TDP_SP36_NO_ECC_ATTR.ram/ADDRBWRADDR[12] (clocked by clk_out1_design_1_clk_wiz_1_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
 TIMING-20#1 Warning
 Non-clocked latch  
 The latch design_1_i/hw0_0/inst/hostS1RxIn_f_reg cannot be properly analyzed as its control pin design_1_i/hw0_0/inst/hostS1RxIn_f_reg/G is not reached by a timing clock
@@ -5162,9 +5183,14 @@ Non-clocked latch
 The latch design_1_i/hw0_0/inst/rxSysData4_in_f_reg cannot be properly analyzed as its control pin design_1_i/hw0_0/inst/rxSysData4_in_f_reg/G is not reached by a timing clock
 Related violations: <none>
 
+TIMING-20#8 Warning
+Non-clocked latch  
+The latch design_1_i/hw0_0/inst/s1RxIn_f_reg cannot be properly analyzed as its control pin design_1_i/hw0_0/inst/s1RxIn_f_reg/G is not reached by a timing clock
+Related violations: <none>
+
 LATCH-1#1 Advisory
 Existing latches in the design  
-There are 13 latches found in the design. Inferred latches are often the result of HDL coding mistakes, such as incomplete if or case statements.
+There are 14 latches found in the design. Inferred latches are often the result of HDL coding mistakes, such as incomplete if or case statements.
 Related violations: <none>
 
 

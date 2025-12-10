@@ -375,13 +375,13 @@ typedef struct radarDataSt
 
 	/*
 	 []no use
-	 subA->ctrA,subB->ctrB,xxx,ctrB->subB
-	 ctrA->drvaA,ctrB->drvaB,xxx,devaB->ctrB
-	 ctrA->drvbA,ctrB->drvbB,xxx,devbB->ctrB
-	 ctrA->meterA,ctrB->meterB,xxx,meterB->ctrB
-	 s1FiberRx,s1RfRx,[s1RxPackCnt],xxx
-	 hostS1FiberRx,,hostS1RfRx,hostS2FiberRx,,hostS2RfRx,
-	 [uart0,uart1],xxx,xxx
+	 0-3 subA->ctrA,subB->ctrB,xxx,ctrB->subB
+	 4-7 ctrA->drvaA,ctrB->drvaB,xxx,devaB->ctrB
+	 8-12 ctrA->drvbA,ctrB->drvbB,xxx,devbB->ctrB
+	 12-15 ctrA->meterA,ctrB->meterB,xxx,meterB->ctrB
+	 16-19 s1FiberRx,s1RfRx,[s1RxPackCnt],xxx
+	 20-23 hostS1FiberRx,,hostS1RfRx,hostS2FiberRx,,hostS2RfRx,
+	 24-27 [uart0,uart1],xxx,xxx
 
 	*/
 
@@ -803,6 +803,46 @@ void udUartRxPrg(UartData *udp,u8 ser)
 	u16 para1 = getBufferWord(&inx, udp->rxBuffer);
 	u16 para2 = getBufferWord(&inx, udp->rxBuffer);
 	u16 para3 = getBufferWord(&inx, udp->rxBuffer);
+
+	/*
+	udp->txPara2 = radarData.conRxCntA[3]*256+radarData.conRxCntA[2];
+	udp->txPara3 = 0;
+	int inx=0;//18
+	udp->txBuffer[inx++]=(radarData.systemStatus0)&255;
+	udp->txBuffer[inx++]=(radarData.systemStatus0>>8)&255;
+	udp->txBuffer[inx++]=(radarData.systemStatus0>>16)&255;
+	udp->txBuffer[inx++]=(radarData.systemStatus0>>24)&255;
+	udp->txBuffer[inx++]=(radarData.systemStatus1)&255;
+	udp->txBuffer[inx++]=(radarData.systemStatus1>>8)&255;
+	udp->txBuffer[inx++]=(radarData.systemStatus1>>16)&255;
+	udp->txBuffer[inx++]=(radarData.systemStatus1>>24)&255;
+	//==================
+	udp->txBuffer[inx++]=(fiber_cmd)&255;
+	udp->txBuffer[inx++]=(fiber_cmd>>8)&255;
+	udp->txBuffer[inx++]=(fiber_cmd_para0)&255;
+	udp->txBuffer[inx++]=(fiber_cmd_para0>>8)&255;
+	*/
+
+	if(para0==0x0001){
+		if(radarData.fpgaId==2){ //sub => ctr
+			radarData.conRxCntA[2]=para2&255;
+			radarData.conRxCntA[3]=para2>>8;
+			ibuf=getBufferDword(&inx, udp->rxBuffer);//systemStatus0
+			ibuf=getBufferDword(&inx, udp->rxBuffer);//systemStatus1
+			int fiberCmd=getBufferWord(&inx, udp->rxBuffer);
+			int fiberCmdPara=getBufferWord(&inx, udp->rxBuffer);
+			ibuf=getBufferWord(&inx, udp->rxBuffer);
+			if(ibuf==0xabcd)
+				radarData.conRxCntA[1]+=1;
+			if(fiberCmd!=0){
+				int test=1;
+
+			}
+		}
+
+	}
+
+
 	if(para0==0x0002){
 		if(radarData.fpgaId==1){ //ctr => sub
 			radarData.conRxCntA[0]=para2&255;
@@ -1535,7 +1575,7 @@ void transBram(){
 	writeBram32(0x3c3b3c3b);//11 16:16 hostS2CommBaseTime,hostS1CommBaseTime
 	writeBram32(0x27102710);//12 16:16 hostAutoPreDataPri,hostAutoDelayTime
 	//=========================================
-	u8 pusleSourceFrom=2	;//0:none 1=sp, 2:local 3:emuSp
+	u8 pusleSourceFrom=2	;//0:none 1=sp, 2:local 3:emuSp(local)
 	if(radarData.pulseGenCh==254)
 		pusleSourceFrom=1;
 	if(radarData.pulseGenCh==253)
@@ -1546,8 +1586,22 @@ void transBram(){
 
 
 
-	if(radarData.fpgaId==1)
-		syncTxMode=1;
+	if(radarData.fpgaId==1){
+		i8=(radarData.systemFlag0>>5)&1;//1:local
+		if(i8){
+			syncTxMode=3;
+			s1RxFrom=2;
+		}
+		else{
+			syncTxMode=1;
+			i8=(radarData.systemFlag0>>19)&3;//0:rf, 1:fiber, 2:auto, 3:none
+			if(i8==0)
+				s1RxFrom=0;
+			else
+				s1RxFrom=1;
+		}
+	}
+
 	if(radarData.fpgaId==2){
 		i8=(radarData.systemFlag0>>6)&1;//1:local
 		if(i8){
@@ -1598,7 +1652,7 @@ void transBram(){
 	ibuf+=syncTxMode<<6;	//fiber and rf tx mode 0:mast,1:sub,2:ctr.3:endpoint
 	ibuf+=hostS1RxFrom<<8;	//0:rf 1:fiber 2:emu:
 	ibuf+=hostS2RxFrom<<10; //0:rf 1:fiber 2:emu:
-	ibuf+=s1RxFrom<<12;		//0:rf 1:fiber 2:emu:
+	ibuf+=s1RxFrom<<12;		//0:rf 1:fiber 2:emu 3:meter Use:
 	ibuf+=emuDelay<<14;		//emu rx delay type
 	ibuf+=txCon_f<<16;
 	ibuf+=txSyncClkEn1_f<<17;//enable rf1 clko in
@@ -2250,6 +2304,7 @@ void timerPrg0()
 			slotAdr |=0x08;
 		//slotAdr=11;//<<debug
 		//buf=15;//<<debug
+		//buf=1;//<<debug
 		radarData.fpgaId=buf;
 
 
@@ -3037,6 +3092,9 @@ void loadTickIpc(){
 		udp->txBuffer[inx++]=(ibuf>>8)&255;
 		//===================================
 
+		bramAddr=15*4;
+		ibuf = readBram32();//
+		radarData.conRxCntA[0]=ibuf>>8;
 		//view rxCntA
 		udp->txBuffer[inx++]=0xb2;
 		udp->txBuffer[inx++]=16;

@@ -1,30 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="paraSet"/>
+		<item key="selection" value="sspaPower"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
-			<item value="paraSet"/>
-			<item value="load"/>
-			<item value="main"/>
-			<item value="fpgaId"/>
-			<item value="radarSetSt"/>
-			<item value="app"/>
-			<item value="transBram"/>
-			<item value="transBra,"/>
-			<item value="TRANS"/>
 			<item value="sspaPower"/>
-			<item value="sspa"/>
-			<item value="loadTickCtr"/>
-			<item value="radarData.pulseGenCh"/>
-			<item value="pusleSourceFrom"/>
-			<item value="bram"/>
+			<item value="sspabuf"/>
+			<item value="SSPABUF"/>
+			<item value="%1"/>
+			<item value="clr"/>
+			<item value="gg"/>
+			<item value="%2"/>
+			<item value="sspaPowerStatusAA"/>
+			<item value="%4"/>
+			<item value="#^1"/>
+			<item value="sspaPowerStatusAa"/>
+			<item value="sta=1"/>
+			<item value="i8"/>
+			<item value="&lt;&lt;debug"/>
+			<item value="ma"/>
 		</list>
 		<list key="replacehistory">
+			<item value=""/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
