@@ -1,36 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="sspaPower"/>
+		<item key="selection" value="ReadBram32"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
-			<item value="sspaPower"/>
-			<item value="sspabuf"/>
-			<item value="SSPABUF"/>
-			<item value="%1"/>
-			<item value="clr"/>
-			<item value="gg"/>
-			<item value="%2"/>
-			<item value="sspaPowerStatusAA"/>
-			<item value="%4"/>
-			<item value="#^1"/>
-			<item value="sspaPowerStatusAa"/>
-			<item value="sta=1"/>
-			<item value="i8"/>
+			<item value="readBram32"/>
+			<item value="prePulseCnt"/>
+			<item value="bramAddr"/>
+			<item value="addr"/>
+			<item value="debugBuf"/>
+			<item value="transBram"/>
+			<item value="syncRxFrom"/>
 			<item value="&lt;&lt;debug"/>
-			<item value="ma"/>
+			<item value="addr=40"/>
+			<item value="adddr=40"/>
+			<item value="conRxCntA"/>
+			<item value="bramAddr=4"/>
+			<item value="pusleSourceFrom"/>
+			<item value="emuDelay"/>
+			<item value="ipcRxPrg"/>
 		</list>
 		<list key="replacehistory">
 			<item value=""/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="1511"/>
-		<item key="DIALOG_Y_ORIGIN" value="235"/>
+		<item key="DIALOG_X_ORIGIN" value="1386"/>
+		<item key="DIALOG_Y_ORIGIN" value="243"/>
 		<item key="DIALOG_WIDTH" value="296"/>
 		<item key="DIALOG_HEIGHT" value="391"/>
 		<item key="DIALOG_FONT_NAME" value="1|Microsoft JhengHei UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Microsoft JhengHei UI"/>
