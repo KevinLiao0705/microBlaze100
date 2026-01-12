@@ -880,7 +880,6 @@ void udUartRxPrg(UartData *udp,u8 ser)
 {
 	u32 ibuf;
 	u8 i8;
-	u8 packId;
 	int inx = 0;
 	u16 deviceId = getBufferWord(&inx, udp->rxBuffer);
 	u16 serialId = getBufferWord(&inx, udp->rxBuffer);
@@ -1075,35 +1074,36 @@ void udUartRxPrg(UartData *udp,u8 ser)
 			radarData.fiberPointBuf[ser][adr++]=getBufferByte(&inx, udp->rxBuffer);
 			radarData.fiberPointBuf[ser][adr++]=getBufferByte(&inx, udp->rxBuffer);
 			//=====================================================================
-
-			packId=getBufferByte(&inx, udp->rxBuffer);
-			//=====================================================================
-			if(packId == 0xab){
-				i8=getBufferByte(&inx, udp->rxBuffer);
-				if(i8>=36)
-					return;
-				radarData.sspaPowerStatusAA[i8]=getBufferByte(&inx, udp->rxBuffer);
-				radarData.sspaPowerV50vAA[i8]=getBufferWord(&inx, udp->rxBuffer);
-				radarData.sspaPowerV50iAA[i8]=getBufferWord(&inx, udp->rxBuffer);
-				radarData.sspaPowerV50tAA[i8]=getBufferWord(&inx, udp->rxBuffer);
-				radarData.sspaPowerV32vAA[i8]=getBufferWord(&inx, udp->rxBuffer);
-				radarData.sspaPowerV32iAA[i8]=getBufferWord(&inx, udp->rxBuffer);
-				radarData.sspaPowerV32tAA[i8]=getBufferWord(&inx, udp->rxBuffer);
-				radarData.sspaModuleStatusAA[i8]=getBufferByte(&inx, udp->rxBuffer);
-				radarData.sspaModuleRfOutAA[i8]=getBufferWord(&inx, udp->rxBuffer);
-				radarData.sspaModuleTemprAA[i8]=getBufferWord(&inx, udp->rxBuffer);
-				drvDataClrBuf[i8]=0;
-				packId=getBufferByte(&inx, udp->rxBuffer);
-			}
-		//=====================================================================
-			if(packId==0xcd){
+			i8=getBufferByte(&inx, udp->rxBuffer);
+			if(i8==0xcd){
 				if(para0==0x0003){
 					radarData.conRxCntA[7]+=1;
 				}
 				else{
 					radarData.conRxCntA[11]+=1;
 				}
+				return;
 			}
+
+			//=====================================================================
+			if(i8 != 0xab)
+				return;
+			i8=getBufferByte(&inx, udp->rxBuffer);
+			if(i8>=36)
+				return;
+			radarData.sspaPowerStatusAA[i8]=getBufferByte(&inx, udp->rxBuffer);
+			radarData.sspaPowerV50vAA[i8]=getBufferWord(&inx, udp->rxBuffer);
+			radarData.sspaPowerV50iAA[i8]=getBufferWord(&inx, udp->rxBuffer);
+			radarData.sspaPowerV50tAA[i8]=getBufferWord(&inx, udp->rxBuffer);
+			radarData.sspaPowerV32vAA[i8]=getBufferWord(&inx, udp->rxBuffer);
+			radarData.sspaPowerV32iAA[i8]=getBufferWord(&inx, udp->rxBuffer);
+			radarData.sspaPowerV32tAA[i8]=getBufferWord(&inx, udp->rxBuffer);
+			radarData.sspaModuleStatusAA[i8]=getBufferByte(&inx, udp->rxBuffer);
+			radarData.sspaModuleRfOutAA[i8]=getBufferWord(&inx, udp->rxBuffer);
+			radarData.sspaModuleTemprAA[i8]=getBufferWord(&inx, udp->rxBuffer);
+			drvDataClrBuf[i8]=0;
+		//=====================================================================
+
 
 
 			/*
@@ -1809,7 +1809,7 @@ void transBram(){
 	if(radarData.fpgaId==15){
 		syncTxMode=2;
 		wgRxFrom=1;
-		syncRxFrom=1;
+		syncRxFrom=2;
 
 	}
 
@@ -1844,7 +1844,7 @@ void transBram(){
 	ibuf+=txCon_f<<16;
 	ibuf+=txSyncClkEn1_f<<17;//enable rf1 clko in
 	ibuf+=txSyncClkEn2_f<<18;//enable rf2 clko in
-	//ibuf+=wgRxFrom<<19;////0:rf 1:fiber 2:meter fiber,3:local
+	ibuf+=wgRxFrom<<19;////0:rf 1:fiber 2:meter fiber,3:local
 	ibuf+=syncRxFrom<<21;//0:rf 1:fiber
 	ibuf+=hostSpType<<22;////0:sp, 1:emuSp
 

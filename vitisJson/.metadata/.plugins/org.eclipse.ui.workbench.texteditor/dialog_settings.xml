@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="ReadBram32"/>
+		<item key="selection" value="transBram"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
-			<item value="readBram32"/>
-			<item value="prePulseCnt"/>
-			<item value="bramAddr"/>
-			<item value="addr"/>
-			<item value="debugBuf"/>
 			<item value="transBram"/>
-			<item value="syncRxFrom"/>
-			<item value="&lt;&lt;debug"/>
-			<item value="addr=40"/>
-			<item value="adddr=40"/>
-			<item value="conRxCntA"/>
-			<item value="bramAddr=4"/>
-			<item value="pusleSourceFrom"/>
-			<item value="emuDelay"/>
-			<item value="ipcRxPrg"/>
+			<item value="15*4"/>
+			<item value="conRxA"/>
+			<item value="conRxCntA[12"/>
+			<item value="conRx"/>
+			<item value="mtr:"/>
+			<item value="udUartRxPrg("/>
+			<item value="main"/>
+			<item value="17*4"/>
+			<item value="udUartRxPrg"/>
+			<item value="tickIpc"/>
+			<item value="loadDev"/>
+			<item value="udUart"/>
+			<item value="udRart"/>
+			<item value="rxA[7"/>
 		</list>
 		<list key="replacehistory">
 			<item value=""/>

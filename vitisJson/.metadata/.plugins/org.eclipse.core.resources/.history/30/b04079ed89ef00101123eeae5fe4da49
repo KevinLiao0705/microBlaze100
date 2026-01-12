@@ -1808,7 +1808,7 @@ void transBram(){
 	}
 	if(radarData.fpgaId==15){
 		syncTxMode=2;
-		wgRxFrom=1;
+		wgRxFrom=2;
 		syncRxFrom=1;
 
 	}
@@ -1844,7 +1844,7 @@ void transBram(){
 	ibuf+=txCon_f<<16;
 	ibuf+=txSyncClkEn1_f<<17;//enable rf1 clko in
 	ibuf+=txSyncClkEn2_f<<18;//enable rf2 clko in
-	//ibuf+=wgRxFrom<<19;////0:rf 1:fiber 2:meter fiber,3:local
+	ibuf+=wgRxFrom<<19;////0:rf 1:fiber 2:meter fiber,3:local
 	ibuf+=syncRxFrom<<21;//0:rf 1:fiber
 	ibuf+=hostSpType<<22;////0:sp, 1:emuSp
 
