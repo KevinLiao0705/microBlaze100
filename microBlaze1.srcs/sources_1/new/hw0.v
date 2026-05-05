@@ -48,6 +48,8 @@ module hw0
 
 
 
+
+
         /* 
                 0: ledR
                 1: ledG
@@ -95,20 +97,21 @@ module hw0
         input wire [7:0] inpChkA,
 
         output wgRfOut,
-        output [7:0]            hdfoA,    		
+        output [7:0]         hdfoA,    		
         output [15:0]        laCh,
         //==================================================
         //[5:0]:spFreqCh[5:0], 6:spInhib, 7:spPreTrig, 8:spGate,[13:9]:spPulseWidthCh[4:0]   
-        input [13:0] hdfioA,        
+        inout [19:0] hdfioA,
+                
         
             		
         /*
                     0:. aSndRx, 1:bSndRx
-                    2: spFreqCh0, 3: spFreqCh1,  4: spFreqCh2, 5: spFreqCh3, 6: spFreqCh4, 7: spFreqCh5
+                    2: spFreqCh0, 3: spFreqCh1,  4: spFreqCh2, 5: spFreqCh3, 6: spFreqCh4, 7: spFreqCh5hd
                     8: spzInhib, 9: spPreTrig   ,10: spGate,
                     [11:15]: spPulseWidthCh[0:4]
                   //   
-                */
+        */
         input [15:0]    dfInP,
         input [15:0]    dfInN,
         
@@ -130,9 +133,9 @@ module hw0
     reg[RamDataWidth-1:0]             bmem[RamDepth-1:0];
     reg[RamDataWidth-1:0]             rmem[255:0];
     reg[RamDataWidth-1:0]             smem0[31:0];
-    reg[RamDataWidth-1:0]             smem1[31:0];
-    reg[RamDataWidth-1:0]             smem2[31:0];
-    reg[RamDataWidth-1:0]             smem3[31:0];
+    reg[RamDataWidth-1:0]             smem1[31:0];//s1RxStatck
+    reg[RamDataWidth-1:0]             smem2[31:0];//host S1RxStack
+    reg[RamDataWidth-1:0]             smem3[31:0];//host S2RxStack
     reg[15:0] wgMaxPulseWidth;
     reg[23:0] wgMinPri;
     //==========================
@@ -143,8 +146,9 @@ module hw0
     wire txSysData1_load_w;
     wire txSysData1_clk_w;
     wire txSysData1_data_w;
-    reg[13:0] hdfioDirA;
-    reg[13:0] hdfiooA;
+    reg[19:0] hdfioDirA;
+    reg[19:0] hdfioOA;
+    wire[19:0] hdfioIA;
     integer      i ;  
   
 
@@ -171,7 +175,7 @@ initialize
         rmem[3]:    rootCommTime=rmem[2]-commBaseTime
         rmem[4]:    hostRx from s1 tx~responseRx time
         rmem[5]:    the filter data of (rootCommTime-trnasTypeDelay)
-        rmem[6]:    15:0 hostS1RCnt when tx 1000 times, [23:16] hostS1RxPackCnt
+        *rmem[6]:    15:0 hostS1RCnt when tx 1000 times,23:16 hostS1RxPackCnt 
         rmem[]:
         rmem[8]:    hostRxData from s1 of data[3~0]
         rmem[9]:    hostRxData from s1 of data[7~4]
@@ -179,24 +183,24 @@ initialize
         rmem[11]:   rootCommTime=rmem[2]-commBaseTime
         rmem[12]:   hostRx from s1 tx~responseRx time
         rmem[13]:   the filter data of (rootCommTime-trnasTypeDelay)
-        rmem[14]:   15:0 hostS2RCnt when tx 1000 times, [23:16] hostS2PackRxCnt
-        rmem[]:
+        *rmem[14]:   15:0 hostS2RCnt when tx 1000 times, 23:16 hostS2RxPackCnt
+        *rmem[15]:   8:8:8:8 xxx,xxx,s1SyncFibRxPackCnt,s1SyncRfRxPackCnt
 
-        rmem[16]:   fiberB1 rxPackCnt
-        rmem[17]:   fiberB1 rxData0
-        rmem[18]:   fiberB1 rxData1
+        *rmem[16]:   fiberB1 rxPackCnt
+        *rmem[17]:   fiberB1 rxData0
+        *rmem[18]:   fiberB1 rxData1
         rmem[19]:
-        rmem[20]:   fiberB3 rxPackCnt
-        rmem[21]:   fiberB3 rxData0
-        rmem[22]:   fiberB3 rxData1
+        *rmem[20]:   fiberB3 rxPackCnt
+        *rmem[21]:   fiberB3 rxData0
+        *rmem[22]:   fiberB3 rxData1
         rmem[23]:
-        rmem[24]:   fiberB5 rxPackCnt
-        rmem[25]:   fiberB5 rxData0
-        rmem[26]:   fiberB5 rxData1
+        *rmem[24]:   fiberB5 rxPackCnt
+        *rmem[25]:   fiberB5 rxData0
+        *rmem[26]:   fiberB5 rxData1
         rmem[27]:
-        rmem[28]:   fiberB7 rxPackCnt
-        rmem[29]:   fiberB7 rxData0
-        rmem[30]:   fiberB7 rxData1
+        *rmem[28]:   fiberB7 rxPackCnt
+        *rmem[29]:   fiberB7 rxData0
+        *rmem[30]:   fiberB7 rxData1
         rmem[31]:
 
         rmem[32]: sysData txDone checkCnt 
@@ -204,39 +208,78 @@ initialize
         rmem[34]: rmemId1  
         rmem[35]:
         rmem[36]: [3:0]:fpgaId
-        rmem[37]: wgRfoutPulseFormDatas end ptr
-        rmem[38]: now wgRfoutPeriod low period time, unit 6.25ns
-        rmem[39]: now wgRfoutPeriod high period time, unit 6.25ns
-        rmem[40]: [5:0]:now wdRfoutFreq, 2.9G~3.49G, [15:8]s1SyncRxPackCnt [23:16]s1WgRxPackCnt
+        *rmem[37]: xxx:5  xxx:wgRfoutPulseFormDatas end ptr
+        *rmem[38]: now wgRfoutPeriod low period time, unit 6.25ns
+        *rmem[39]: now wgRfoutPeriod high period time, unit 6.25ns
+        *rmem[40]: [5:0]:now wdRfoutFreq, 2.9G~3.49G, [15:8]s1SyncRxPackCnt [23:16]s1WgRxPackCnt
         
         rmem[41]: s1TxSyncStatus txDone checkCnt 
-        rmem[42]<=hostSxTxStatusBufCnt;
+        *rmem[42]<=hostSxTxStatusBufCnt txDone checkCnt;
+        
         rmem[43]<=s1RxCommandDataCnt;
-        rmem[44]<=hostS1RxCommandDataCnt;
-        rmem[45]<=hostS2RxCommandDataCnt;
+        *rmem[44]<=hostS1RxCommandDataCnt;
+        *rmem[45]<=hostS2RxCommandDataCnt;
+        rmem[46]<=hdfioIA[19:0];
+        
+        rmem[47]:    sxSyncRxData from s1 of data[3~0]
+        rmem[48]:    sxSyncRxData from s1 of data[7~4]
         
         
-        rmem[48~63]: wgRfoutPulseFormDatas, bit[0]:0:low 1:high, bit[31:29] periodTime
-    
-       rmem[64~96]: siRxSyncFromHost commandData trans to vitis
-       rmem[96~128]: hostS1RxSyncFromHost commandData trans to vitis
-       rmem[128~160]: hostS2RxSyncFromHost commandData trans to vitis
+        smem0:rmem[128:32]: wgRfoutPulseFormDatas, bit[0]:0:low 1:high, bit[31:29] periodTime
+        smem1:rmem[160:32]: sxRxSyncFromHost commandData trans to vitis
+        *smem2:rmem[192:32]: hostS1RxSyncFromHost commandData trans to vitis
+        *smem3:rmem[224:32]: hostS2RxSyncFromHost commandData trans to vitis
 
 
         */
         //======================================        
+        /*
+        mem[0]=32'h0000_0000;//systemStatus0
+        mem[1]=32'h0000_0000;//systemStatus1
+        mem[2]=32'b00000000_00000000_00000000_00010000;//systemFlag0
+        mem[3]=32'b00000000_00000000_00000000_00000001;//systemFlag1
+        *mem[4]=32'h0014_0a0a;//16:8:8 ,preTrigTime,  preRfoutTime  afterTrigTime,
+        mem[5]=32'h0000_1000;//8:8:16, spare,laGroupCh,commTestPacks
+        *mem[6]=32'h1000_2580;//12:20, xxx,hostWgVideoGateDelayTime 
+        mem[7]=32'h0100_0100;//16:16 chRfTimeDelay,chFiberTimeDelay
+        *mem[8]=32'h000a_1000;//16:4:4:8 preDataGateWidth:xxx:fgaId:pulse gen sample end
+        *mem[9]=32'h0000_0221;//12:20, xxx,wgTrigGateDelayTime-sub 
+        mem[10]=32'h0000_05ed;//12:20, xxx,s1WgVideoGateDelayTime 
+        mem[11]=32'h0000_3ce8;//12:20, xxx,baseCommTime//3de8
+        *mem[12]=32'h0000_0000;//16:16 hostAutoPreDataPri,hostAutoDelayTime(minimun pri)
+
+
+        *mem[14][23:16] emu sp freq
+        *mem[14][4:0] emu sp pulse width table index
+        *mem[15][31:24] spEmuWgFlag
+        *mem[15][23:0] spEmuWgPriTime unit=0.1us
+
+        *mem[31]=32'habcd_1234;//mem 0~95 block change flag
+
+        *mem[96]     txData[3:0] from vitis
+        *mem[97]     txData[7:4] fomr vits
+        *mem[98]     changeValueCnt
+        *mem[101]    hostSxTx sync staus data 8:15:1:8 txCnt,xxx,disableFlag,data
+
+
+
+        */
+
+
+
         mem[0]=32'h0000_0000;//systemStatus0
         mem[1]=32'h0000_0000;//systemStatus1
         mem[2]=32'b00000000_00000000_00000000_00010000;//systemFlag0
         mem[3]=32'b00000000_00000000_00000000_00000001;//systemFlag1
         mem[4]=32'h0014_0a0a;//16:8:8 ,preTrigTime,  preRfoutTime  afterTrigTime,
         mem[5]=32'h0000_1000;//8:8:16, spare,laGroupCh,commTestPacks
-        mem[6]=32'h0000_2580;//12:20, xxx,hostWgVideoGateDelayTime 
+        mem[6]=32'h1000_2580;//12:20, xxx,hostWgVideoGateDelayTime 
         mem[7]=32'h0100_0100;//16:16 chRfTimeDelay,chFiberTimeDelay
         mem[8]=32'h000a_1000;//16:8:8 preDataGateWidth:fgaId,sample end  0
         mem[9]=32'h0000_0221;//12:20, xxx,wgTrigGateDelayTime-sub 
         mem[10]=32'h0000_05ed;//12:20, xxx,s1WgVideoGateDelayTime 
         mem[11]=32'h0000_3ce8;//12:20, xxx,baseCommTime//3de8
+        //mem[12]=32'h0000_0000;//16:16 xxx,emuTimeDelay
         mem[31]=32'habcd_1234;//  
 
         //======================================        
@@ -249,11 +292,12 @@ initialize
             pulseGen datas 0x20<=addr<0x60
         */
         
-    //mem[96]     txData[3:0] from vitis
-    //mem[97]     txData[7:4] fomr vits
-    //mem[98]     changeValueCnt
+        //mem[96]     txData[3:0] from vitis
+        //mem[97]     txData[7:4] fomr vits
+        //mem[98]     changeValueCnt
         
-    //mem[100]     s1TxSyncStatusData frim vitis
+        
+        //mem[100]     s1TxSyncStatusData from vitis
         
         for (i=0;i<32;i=i+1)begin
             mem[32+i*2]=(0*256+43)*65536+100*10;
@@ -282,7 +326,6 @@ initialize
         wgDataBit_f=0;
         wgTrig_f=1;
         wgRfout_f=0;
-        wgTrigGate_f=0;
         wgTimeClk=10*1000;
         //==================================
         hostVideoGateDelayTimeCnt=20'hfff00;
@@ -300,19 +343,39 @@ initialize
         txSyncClkEn2_f=0;
         memSaveBuf1=0;
         hdfioDirA=0;
-        hdfiooA=0;
+        hdfioOA=0;
         fpgaId=4'b1111;
         bmem[8][11:8]=4'b1111;
     end
 
+/*===============================================================================================================
+/*===============================================================================================================
+/*===============================================================================================================
+/*===============================================================================================================
+
+
+
+/*===========================================================
+purpose:
+    generate hostS1RxPackCnt to rmem[6][23:16]
+    save  hostS1Rx statusData  to smem2[0~31], stackPtr to rmem[44]
+    generate hostS1Rx correctCnt per thousand to rmem[6][15:0];
+input: 
+    hostS1TxEnd_w
+    hostS1RxPack_w
+    hostS1RxData1_wb
+output: 
+    rmem[6][15:0] hostS1CommOkRate/1000
+    rmem[6][23:16]<=hostS1RxPackCnt
+    smem2[ptr:0~31]<=s1StatusData
+    rmem[44]<=ptr
+=============================================================*/
     reg hostS1TxEnd_ff;
     reg[15:0] hostS1TxCnt;
     reg hostS1RxPack_ff;
     reg[15:0] hostS1RxCnt;
     reg[7:0] hostS1RxPackCnt;
     reg[4:0] hostS1RxCommandDataCnt;
-
-
     always @(posedge clk160m) begin
         if(hostS1TxEnd_w)begin
             if(!hostS1TxEnd_ff)
@@ -326,9 +389,12 @@ initialize
                 hostS1RxPackCnt<=hostS1RxPackCnt+1;
                 rmem[6][23:16]<=hostS1RxPackCnt;
                 //===========================================
-                smem2[s1RxCommandDataCnt]<=hostS1RxData1_wb;
-                hostS1RxCommandDataCnt<=hostS1RxCommandDataCnt+1;
-                rmem[44]<=hostS1RxCommandDataCnt;
+                if(!hostS1RxData1_wb[8:8])begin
+                    smem2[hostS1RxCommandDataCnt]<=hostS1RxData1_wb;
+                    rmem[7]<=hostS1RxData1_wb;
+                    hostS1RxCommandDataCnt<=hostS1RxCommandDataCnt+1;
+                    rmem[44]<=hostS1RxCommandDataCnt;
+                end
             end    
         end
         hostS1RxPack_ff<=hostS1RxPack_w;
@@ -339,8 +405,29 @@ initialize
             hostS1RxCnt<=0;
         end    
     end
+//=========================================================================================================
+
+
+
+
+
     
 
+/*===========================================================
+purpose:
+    generate hostS2RxPackCnt to rmem[14][23:16]
+    save  hostS2Rx statusData  to smem3[0~31], stackPtr to rmem[45]
+    generate hostS2Rx correctCnt per thousand to rmem[6][15:0];
+input: 
+    hostS2TxEnd_w
+    hostS2RxPack_w
+    hostS2RxData1_wb
+output: 
+    rmem[14][15:0] hostS2CommOkRate/1000
+    rmem[14][23:16]<=hostS2RxPackCnt
+    smem3[ptr:0~31]<=s2StatusData
+    rmem[45]<=ptr
+=============================================================*/
     reg hostS2TxEnd_ff;
     reg[15:0] hostS2TxCnt;
     reg hostS2RxPack_ff;
@@ -359,10 +446,12 @@ initialize
                 hostS2RxCnt<=hostS2RxCnt+1;
                 hostS2RxPackCnt<=hostS2RxPackCnt+1;
                 rmem[14][23:16]<=hostS2RxPackCnt;
-                //===================================================      
-                smem3[hostS2RxCommandDataCnt]<=hostS2RxData1_wb;
-                hostS2RxCommandDataCnt<=hostS2RxCommandDataCnt+1;
-                rmem[45]<=hostS2RxCommandDataCnt;
+                //===================================================
+                if(!hostS2RxData1_wb[8:8])begin      
+                    smem3[hostS2RxCommandDataCnt]<=hostS2RxData1_wb;
+                    hostS2RxCommandDataCnt<=hostS2RxCommandDataCnt+1;
+                    rmem[45]<=hostS2RxCommandDataCnt;
+                end
             end    
         end
         hostS2RxPack_ff<=hostS2RxPack_w;
@@ -372,43 +461,20 @@ initialize
             hostS2RxCnt<=0;
         end    
     end
+//=========================================================================================================
 
 
     
-/*===========================================================
-txData test
-=============================================================*/
-
-/*
-    reg[23:0] txDataTimeCnt;
-    reg[15:0] testTxBuf[3:0];
-    reg testPreData_f;
-    always @(posedge clk160m) begin
-        txDataTimeCnt<=txDataTimeCnt+1;
-        if(txDataTimeCnt>=160000)
-            txDataTimeCnt<=1;
-        if(txDataTimeCnt==1)begin
-            testTxBuf[0]<=16'h1234;    
-            testTxBuf[1]<=16'h5678;    
-            testTxBuf[2]<=16'h9abc;    
-            testTxBuf[3]<=16'hdef0;    
-        end            
-        if(txDataTimeCnt==2)
-            testPreData_f<=0;
-        if(txDataTimeCnt==162)
-            testPreData_f<=1;
-    end
-*/    
     
 /*===========================================================
 purpose:
-    generate txDatas of vitisUserSetValue via fiberB to other device
+    generate txSysPreData_f and txDatas of vitisUserSetValue via fiberB to other device
 input: 
     mem[96]     txData[3:0] from vitis
     mem[97]     txData[7:4] fomr vits
     mem[98]     changeValueCnt
 output: 
-    txSysPreData_f tx trig flag, low active
+    txSysPreData_f tx trig flag, low active 1 us
     txSysData[0:3] tx data 16bit *4
 =============================================================*/
     reg[31:0] txSysDataChgBuf;
@@ -443,7 +509,7 @@ output:
 
 /*===========================================================
 purpose:
-    generate rxDatas for vitisUserStatusValue from fiberB of other device
+    generate ch1:rxDatas for vitisUserStatusValue from fiberB of other device
 input: 
     rxSysData1_pack_w       from rxModule, fiberB rxData tirg flag, high active
     rxSysData1_data0_wb     from rxModule, 16bit
@@ -467,15 +533,13 @@ output:
                 rmem[18][31:16]<=rxSysData1_data3_wb;                   
                 rxSysData1_chg_buf<=rxSysData1_chg_buf+1;
             end
-            rxSysData1_pack_ff<=rxSysData1_pack_w;
         end                   
-        else
-            rxSysData1_pack_ff<=rxSysData1_pack_w;                   
+        rxSysData1_pack_ff<=rxSysData1_pack_w;                   
     end
 
 /*===========================================================
 purpose:
-    generate rxDatas for vitisUserStatusValue from fiberB of other device
+    generate ch2:rxDatas for vitisUserStatusValue from fiberB of other device
 input: 
     rxSysData2_pack_w       from rxModule, fiberB rxData tirg flag, high active
     rxSysData2_data0_wb     from rxModule, 16bit
@@ -499,15 +563,13 @@ output:
                 rmem[22][31:16]<=rxSysData2_data3_wb;                   
                 rxSysData2_chg_buf<=rxSysData2_chg_buf+1;
             end
-            rxSysData2_pack_ff<=rxSysData2_pack_w;
         end                   
-        else
-            rxSysData2_pack_ff<=rxSysData2_pack_w;                   
+        rxSysData2_pack_ff<=rxSysData2_pack_w;                   
     end
 
 /*===========================================================
 purpose:
-    generate rxDatas for vitisUserStatusValue from fiberB of other device
+    generate ch3:rxDatas for vitisUserStatusValue from fiberB of other device
 input: 
     rxSysData3_pack_w       from rxModule, fiberB rxData tirg flag, high active
     rxSysData3_data0_wb     from rxModule, 16bit
@@ -531,15 +593,13 @@ output:
                 rmem[26][31:16]<=rxSysData3_data3_wb;                   
                 rxSysData3_chg_buf<=rxSysData3_chg_buf+1;
             end
-            rxSysData3_pack_ff<=rxSysData3_pack_w;
         end                   
-        else
-            rxSysData3_pack_ff<=rxSysData3_pack_w;                   
+        rxSysData3_pack_ff<=rxSysData3_pack_w;                   
     end
 
 /*===========================================================
 purpose:
-    generate rxDatas for vitisUserStatusValue from fiberB of other device
+    generate ch4:rxDatas for vitisUserStatusValue from fiberB of other device
 input: 
     rxSysData4_pack_w       from rxModule, fiberB rxData tirg flag, high active
     rxSysData4_data0_wb     from rxModule, 16bit
@@ -563,13 +623,15 @@ output:
                 rmem[30][31:16]<=rxSysData4_data3_wb;                   
                 rxSysData4_chg_buf<=rxSysData4_chg_buf+1;
             end
-            rxSysData4_pack_ff<=rxSysData4_pack_w;
         end                   
-        else
-            rxSysData4_pack_ff<=rxSysData4_pack_w;                   
+        rxSysData4_pack_ff<=rxSysData4_pack_w;                   
     end
 
 //===========================================================================================
+
+
+
+
 
 /*===========================================================
 purpose:
@@ -591,6 +653,15 @@ output:
         s1RfRxPack_wf<=s1RfRxPack_w;                   
     end
 //===========================================================================================
+
+
+
+
+
+
+
+
+
 
 /*===========================================================
 purpose:
@@ -614,19 +685,31 @@ output:
 //===========================================================================================
 
 
+
 /*===========================================================
-generate pulseFormInf
+purpose:
+    generate pulseFormInf for scope use
+input: 
+    wgRfout_f
+output: 
+    stack: smem0[0~31] 
+    stackPtr: rmem[37][4:0]
+    lowPeriald: rmem[38]
+    high period: rmem[39]
+    wgFreq: rmem[40][5:0]
 =============================================================*/
+
+
     reg wgRfoutH_f;
     reg[31:0] wgRfoutTime;
-    reg[31:0] wgRfoutCnt;
+    reg[4:0] wgRfoutCnt;
     reg[31:0] wgRfoutPeriod;
     reg[31:0] wgRfoutTime_buf;
     
     always @(posedge clk160m) begin
         if(wgRfoutH_f ^ wgRfout_f)begin
-            smem0[wgRfoutCnt[4:0]]<=wgRfoutTime_buf;
-            rmem[37]<=wgRfoutCnt;
+            smem0[wgRfoutCnt]<=wgRfoutTime_buf;
+            rmem[37][4:0]<=wgRfoutCnt;
             wgRfoutCnt<=wgRfoutCnt+1;
             if(wgRfout_f)
                 rmem[38]<=wgRfoutPeriod;//low period
@@ -647,7 +730,6 @@ generate pulseFormInf
                 rmem[39]<=0;//high period
             end                
             if(wgRfoutTime>=160*10000)begin
-                //smem0[wgRfoutCnt[4:0]]<=(wgRfoutTime<<1)+(!wgRfout_f);
                 smem0[wgRfoutCnt[4:0]]<=wgRfoutTime_buf;
                 rmem[37]<=wgRfoutCnt;
                 wgRfoutCnt<=wgRfoutCnt+1;
@@ -655,12 +737,29 @@ generate pulseFormInf
             end
         end
     end
+//===========================================================================================
+    
+    
+    
+    
 
         
     
 /*===========================================================
 generate real time cnt
+generate
 =============================================================*/
+/*===========================================================
+purpose:
+    generate real time cnt
+    save mem[0~95] to bmem[0~95]
+input: 
+    mem[31] change flag
+    mem[0~95]
+output:
+    realTimeCnt
+    bmem[0~95]
+ =============================================================*/
     reg[23:0] realTimeCnt;
     always @(posedge clk160m) begin
         realTimeCnt<=realTimeCnt+1;
@@ -671,6 +770,11 @@ generate real time cnt
             end    
         end        
     end
+//===========================================================================================
+    
+    
+    
+    
     
     
     
@@ -718,7 +822,7 @@ output:
         //===========================================
         if(localPreDataGateTimeCnt==1)begin
             localWgSampleChg_f<=0;
-            if(localWgPriTime<52*160)begin
+            if(localWgPriTime<52*160)begin      //protect pri must over 52us
                 localWgPriTime<=160*1000*100;        
             end
         end    
@@ -753,6 +857,14 @@ output:
             localPreDataGateTimeCnt<=1;
         end    
     end
+//===========================================================================================
+    
+    
+    
+    
+    
+    
+    
 /*===========================================================
 purpose:
     generate emu Sp Signal
@@ -803,8 +915,6 @@ output:
 // switch pin 
 //===================================================
     reg[3:0] fpgaId;
-    reg s1Inhibit_f;
-    reg wgTrigGate_f;
     reg hostS1RxIn_f;
     reg hostS2RxIn_f;
     reg s1LocalRxIn_f;
@@ -814,11 +924,15 @@ output:
     
     
     reg fibTxB1_f;
+    reg fibTxB2_f;
+    reg fibTxB3_f;
+    reg fibTxB4_f;
+    
     reg rxSysData1_in_f;
     reg rxSysData2_in_f;
     reg rxSysData3_in_f;
     reg rxSysData4_in_f;
-    reg fpgaIdDelay;
+    reg[7:0] fpgaIdDelay;
     reg[7:0] hdfoR;
     
     reg[15:0] s1SyncRxData0_reg;    
@@ -836,158 +950,175 @@ output:
     reg s1SyncRxPack_f;
     reg s1WgRxPack_f;
     reg s1WgRxIn_f;
+    reg[7:0] s1SyncRxPackCnt;
+
+    reg[1:0] rxProcChkId;
+
     
     
-    always @* 
-    begin
-        fpgaId=bmem[8][11:8];
-        rmem[36][3:0]=fpgaId;
-        s1Inhibit_f=s1WgInhibit_f;
-        wgTrigGate_f=s1WgTrigGate_f;
-        fibTxB1_f=txSysData1_data_w;
+    //always @* 
+    //begin
+    //always @* begin
+    //end
+    
+    
+    
+    always @(posedge clk160m) begin
+        fpgaId<=mem[8][11:8];
+        rmem[36][3:0]<=fpgaId;
         //===================================
-        hdfoR=mem[17][7:0];
-        if(fpgaId==0)//mast
-            fpgaIdDelay=0;
-        if(fpgaId==1)//sub
-            fpgaIdDelay=bmem[16][7:0];
-        if(fpgaId==2)//ctr
-            fpgaIdDelay=bmem[16][15:8];
-        if(fpgaId==3)//drv
-            fpgaIdDelay=bmem[16][23:16];
-        if(fpgaId==4)//drv
-            fpgaIdDelay=bmem[16][23:16];
-        if(fpgaId==15)//mter
-            fpgaIdDelay=bmem[16][31:24];
-            
+        fibTxB1_f<=txSysData1_data_w;
+        fibTxB2_f<=txSysData1_data_w;
+        fibTxB3_f<=txSysData1_data_w;
+        fibTxB4_f<=txSysData1_data_w;
+        hdfoR<=mem[17][7:0];
+        //===================================
+        if(fpgaId==0)begin//mast
+            fpgaIdDelay<=0;
+            rxProcChkId<=2'b01;
+        end    
+        if(fpgaId==1)begin//sub
+            fpgaIdDelay<=bmem[16][7:0];
+            rxProcChkId<=2'b00;
+        end    
+        if(fpgaId==2)begin//ctr
+            fpgaIdDelay<=bmem[16][15:8];
+            rxProcChkId<=2'b00;
+        end    
+        if(fpgaId==3)begin//drv
+            fpgaIdDelay<=bmem[16][23:16];
+            rxProcChkId<=2'b11;
+        end    
+        if(fpgaId==4)begin//drv
+            fpgaIdDelay<=bmem[16][23:16];
+            rxProcChkId<=2'b11;
+        end    
         if(fpgaId==15)begin//mter
-            hdfioDirA[0]=1;
-            hdfioDirA[2]=1;
-            hdfioDirA[6]=1;
-            //hdfiooA[2]=txSysData1_data_w;
-            //hdfiooA[6]=s1VideoGate_f;
-            rxSysData1_in_f=hdfioA[3];
+            fpgaIdDelay<=bmem[16][31:24];
+            rxProcChkId<=2'b11;
+        end    
+        //===================================
+        if(fpgaId==15)begin//mter
+            hdfioDirA[0]<=1;
+            hdfioDirA[2]<=1;
+            hdfioDirA[6]<=1;
+            hdfioOA[0]<=0;
+            hdfioOA[2]<=txSysData1_data_w;
+            rxSysData1_in_f<=hdfioIA[3];
+            hdfioOA[6]<=s1VideoGate_f;
         end
         else begin
-            hdfioDirA=0;
-            rxSysData1_in_f=fibRxB1;
-            rxSysData2_in_f=fibRxB3;
-            rxSysData3_in_f=fibRxB5;
-            rxSysData4_in_f=fibRxB7;
-            //=================
-            if(bmem[13][9:8]==0)//hostS1RxFrom rf
-                hostS1RxIn_f=rfInA[4];
-            if(bmem[13][9:8]==1)//hostS1RxFrom fiber
-                hostS1RxIn_f=fibRxA[0];
-            if(bmem[13][9:8]==2)begin//hostS1RxFrom emu
-                if(bmem[13][15:14]==0)//emuDelay
-                    hostS1RxIn_f=s1SyncTxData_w;
-                if(bmem[13][15:14]==1)
-                    hostS1RxIn_f=hostEmuRxDataBuf[1][31];
-                if(bmem[13][15:14]==2)
-                    hostS1RxIn_f=hostEmuRxDataBuf[2][31];
-                if(bmem[13][15:14]==3)
-                    hostS1RxIn_f=hostEmuRxDataBuf[3][31];
-            end
+            hdfioDirA<=0;
+            rxSysData1_in_f<=fibRxB1;
+            rxSysData2_in_f<=fibRxB3;
+            rxSysData3_in_f<=fibRxB5;
+            rxSysData4_in_f<=fibRxB7;
         end    
-            
-            
         //==============================    
-        //========================        
+        if(bmem[13][9:8]==0)//hostS1RxFrom rf
+            hostS1RxIn_f<=rfInA[4];
+        if(bmem[13][9:8]==1)//hostS1RxFrom fiber
+            hostS1RxIn_f<=fibRxA[0];
+        if(bmem[13][9:8]==2)begin//hostS1RxFrom emu
+            if(bmem[13][15:14]==0)//emuDelay
+                hostS1RxIn_f<=s1SyncTxData_w;
+            if(bmem[13][15:14]==1)
+                hostS1RxIn_f<=hostEmuRxDataBuf[1][31];
+            if(bmem[13][15:14]==2)
+                hostS1RxIn_f<=hostEmuRxDataBuf[2][31];
+            if(bmem[13][15:14]==3)
+                hostS1RxIn_f<=hostEmuRxDataBuf[3][31];
+        end
+        //==============================    
         if(bmem[13][11:10]==0)//hostS2RxFrom
-            hostS2RxIn_f=rfInA[10];
+            hostS2RxIn_f<=rfInA[10];
         if(bmem[13][11:10]==1)//hostS2RxFrom
-            hostS2RxIn_f=fibRxA[1];
+            hostS2RxIn_f<=fibRxA[1];
         if(bmem[13][11:10]==2)begin//hostS2RxFrom
             if(bmem[13][15:14]==0)//emuDelay
-                hostS2RxIn_f=s1SyncTxData_w;
+                hostS2RxIn_f<=s1SyncTxData_w;
             if(bmem[13][15:14]==1)
-                hostS2RxIn_f=hostEmuRxDataBuf[1][31];
+                hostS2RxIn_f<=hostEmuRxDataBuf[1][31];
             if(bmem[13][15:14]==2)
-                hostS2RxIn_f=hostEmuRxDataBuf[2][31];
+                hostS2RxIn_f<=hostEmuRxDataBuf[2][31];
             if(bmem[13][15:14]==3)
-                hostS2RxIn_f=hostEmuRxDataBuf[3][31];
+                hostS2RxIn_f <=hostEmuRxDataBuf[3][31];
         end        
-        
-        
-        
-        
-        
-    	//ibuf+=wgRxFrom<<12;		//0:rf 1:fiber 2:meter fiber,3:local
+        //==============================    
+        if(bmem[8][11:8]==15)
+            s1FibRxIn_f <= hdfioIA[1];
+        else    
+            s1FibRxIn_f <= fibRxA[0];
+        s1RfRxIn_f <= rfInA[4];
+        //===========================================================
         if(bmem[13][13:12]==0)begin//wgRxFrom rf
-            s1RfRxIn_f = rfInA[4];
-            s1WgRxIn_f = rfInA[4];
-            s1WgRxData0_reg=s1RfRxData0_wb;
-            s1WgRxData1_reg=s1RfRxData1_wb;
-            s1WgRxData2_reg=s1RfRxData2_wb;
-            s1WgRxData3_reg=s1RfRxData3_wb;
-            s1WgRxPack_f=s1RfRxPack_w;
+            s1WgRxIn_f <= rfInA[4];
+            s1WgRxData0_reg<=s1RfRxData0_wb;
+            s1WgRxData1_reg<=s1RfRxData1_wb;
+            s1WgRxData2_reg<=s1RfRxData2_wb;
+            s1WgRxData3_reg<=s1RfRxData3_wb;
+            s1WgRxPack_f<=s1RfRxPack_w;
         end    
         if(bmem[13][13:12]==1)begin//wgRxFrom fib
-            if(bmem[8][11:8]==15)begin
-                s1FibRxIn_f=hdfioA[1];
-                s1WgRxIn_f =hdfioA[1];
-            end    
-            else begin    
-                s1FibRxIn_f = fibRxA[0];
-                s1WgRxIn_f =fibRxA[0];
-            end
-            s1WgRxData0_reg=s1FibRxData0_wb;
-            s1WgRxData1_reg=s1FibRxData1_wb;
-            s1WgRxData2_reg=s1FibRxData2_wb;
-            s1WgRxData3_reg=s1FibRxData3_wb;
-            s1WgRxPack_f=s1FibRxPack_w;
+            if(bmem[8][11:8]==15)
+                s1WgRxIn_f <=hdfioIA[1];
+            else    
+                s1WgRxIn_f <=fibRxA[0];
+            s1WgRxData0_reg<=s1FibRxData0_wb;
+            s1WgRxData1_reg<=s1FibRxData1_wb;
+            s1WgRxData2_reg<=s1FibRxData2_wb;
+            s1WgRxData3_reg<=s1FibRxData3_wb;
+            s1WgRxPack_f<=s1FibRxPack_w;
         end    
         if(bmem[13][13:12]==2)begin//wgRxFrom emu
             if(bmem[13][15:14]==0)begin//emuDelay
-                s1LocalRxIn_f=hostS1TxData_w;
-                s1WgRxIn_f=hostS1TxData_w;
+                s1LocalRxIn_f<=hostS1TxData_w;
+                s1WgRxIn_f<=hostS1TxData_w;
             end      
             if(bmem[13][15:14]==1)begin
-                s1LocalRxIn_f=s1EmuRxDataBuf[1][31];
-                s1WgRxIn_f=s1EmuRxDataBuf[1][31];
+                s1LocalRxIn_f<=s1EmuRxDataBuf[1][31];
+                s1WgRxIn_f<=s1EmuRxDataBuf[1][31];
             end    
             if(bmem[13][15:14]==2)begin
-                s1LocalRxIn_f=s1EmuRxDataBuf[2][31];
-                s1WgRxIn_f=s1EmuRxDataBuf[2][31];
+                s1LocalRxIn_f<=s1EmuRxDataBuf[2][31];
+                s1WgRxIn_f<=s1EmuRxDataBuf[2][31];
             end    
             if(bmem[13][15:14]==3)begin
-                s1LocalRxIn_f=s1EmuRxDataBuf[3][31];
-                s1WgRxIn_f=s1EmuRxDataBuf[3][31];
+                s1LocalRxIn_f<=s1EmuRxDataBuf[3][31];
+                s1WgRxIn_f<=s1EmuRxDataBuf[3][31];
             end    
-            s1WgRxData0_reg=s1LocalRxData0_wb;
-            s1WgRxData1_reg=s1LocalRxData1_wb;
-            s1WgRxData2_reg=s1LocalRxData2_wb;
-            s1WgRxData3_reg=s1LocalRxData3_wb;
-            s1WgRxPack_f=s1LocalRxPack_w;
+            s1WgRxData0_reg<=s1LocalRxData0_wb;
+            s1WgRxData1_reg<=s1LocalRxData1_wb;
+            s1WgRxData2_reg<=s1LocalRxData2_wb;
+            s1WgRxData3_reg<=s1LocalRxData3_wb;
+            s1WgRxPack_f<=s1LocalRxPack_w;
         end 
         if(bmem[13][13:12]==3)begin//
-            s1WgRxIn_f = hostS1TxData_w;
-            s1WgRxData0_reg=s1LocalRxData0_wb;
-            s1WgRxData1_reg=s1LocalRxData1_wb;
-            s1WgRxData2_reg=s1LocalRxData2_wb;
-            s1WgRxData3_reg=s1LocalRxData3_wb;
-            s1WgRxPack_f=s1LocalRxPack_w;
+            s1WgRxIn_f <= hostS1TxData_w;
+            s1WgRxData0_reg <=s1LocalRxData0_wb;
+            s1WgRxData1_reg<=s1LocalRxData1_wb;
+            s1WgRxData2_reg<=s1LocalRxData2_wb;
+            s1WgRxData3_reg<=s1LocalRxData3_wb;
+            s1WgRxPack_f<=s1LocalRxPack_w;
         end 
-        
-        
-        
-         
-        if(bmem[13][21:21]==0)begin
-            s1SyncRxIn_f= rfInA[4];
-            s1SyncRxData0_reg=s1RfRxData0_wb;
-            s1SyncRxData1_reg=s1RfRxData1_wb;
-            s1SyncRxData2_reg=s1RfRxData2_wb;
-            s1SyncRxData3_reg=s1RfRxData3_wb;
-            s1SyncRxPack_f=s1RfRxPack_w;
+        //===========================================================
+        if(bmem[13][21:21]==0)begin//subSyncRxFrom
+            s1SyncRxIn_f<= rfInA[4];
+            s1SyncRxData0_reg<=s1RfRxData0_wb;
+            s1SyncRxData1_reg<=s1RfRxData1_wb;
+            s1SyncRxData2_reg<=s1RfRxData2_wb;
+            s1SyncRxData3_reg<=s1RfRxData3_wb;
+            s1SyncRxPack_f<=s1RfRxPack_w;
+            s1SyncRxPackCnt<=s1RfRxPack_cnt;
         end      
         else begin                    
-            s1SyncRxIn_f= fibRxA[0];
-            s1SyncRxData0_reg=s1FibRxData0_wb;
-            s1SyncRxData1_reg=s1FibRxData1_wb;
-            s1SyncRxData2_reg=s1FibRxData2_wb;
-            s1SyncRxData3_reg=s1FibRxData3_wb;
-            s1SyncRxPack_f=s1FibRxPack_w;
+            s1SyncRxIn_f<= fibRxA[0];
+            s1SyncRxData0_reg<=s1FibRxData0_wb;
+            s1SyncRxData1_reg<=s1FibRxData1_wb;
+            s1SyncRxData2_reg<=s1FibRxData2_wb;
+            s1SyncRxData3_reg<=s1FibRxData3_wb;
+            s1SyncRxPack_f<=s1FibRxPack_w;
+            s1SyncRxPackCnt<=s1FibRxPack_cnt;
         end      
     end
 
@@ -1010,65 +1141,93 @@ output:
     reg fib3TxData;
     reg fib4TxData;
     
-    always @* begin
-        txSyncClkEn1_f=bmem[13][17];
-        txSyncClkEn2_f=bmem[13][18];
+    //always @* begin
+    always @(posedge clk160m) begin
 
         if(bmem[13][5:4]==0)begin //radiation off
-            hostWgPreDataGate_f=1;
-            hostWgPulseWidth=1000;//unit 0.1us
-            hostWgRfFreq=0;
-            hostWgFlag=0;
+            hostWgPreDataGate_f<=1;
+            hostWgPulseWidth<=1000;//unit 0.1us
+            hostWgRfFreq<=0;
+            hostWgFlag<=0;
         end
         if(bmem[13][5:4]==1)begin //sp
-            hostWgPreDataGate_f=hdfioA[7];
-            hostWgPulseWidth=bmem[hdfioA[13:9]+96][15:0];//unit 0.1us
-            hostWgRfFreq={hdfioA[6],7'b0000000};
-            hostWgFlag=spEmuWgFlag;
+            hostWgPreDataGate_f<=hdfioIA[7];
+            hostWgPulseWidth<=bmem[hdfioIA[13:9]+96][15:0];//unit 0.1us
+            hostWgRfFreq<={hdfioIA[6],7'b0000000};
+            hostWgFlag<=spEmuWgFlag;
         end
         if(bmem[13][5:4]==2)begin //local
-            hostWgPreDataGate_f=localPreDataGate_f;
-            hostWgPulseWidth=localWgPulseWidth;
-            hostWgRfFreq=localWgRfFreq;
-            hostWgFlag=localWgFlag;
+            hostWgPreDataGate_f<=localPreDataGate_f;
+            hostWgPulseWidth<=localWgPulseWidth;
+            hostWgRfFreq<=localWgRfFreq;
+            hostWgFlag<=localWgFlag;
         end
         if(bmem[13][5:4]==3)begin //emuSp
-            hostWgPreDataGate_f=spEmuPreDataGate_f;
-            hostWgPulseWidth=bmem[spEmuWgPulseWidthTblInx+96][15:0];//unit 0.1us
-            hostWgRfFreq=spEmuWgRfFreq;
-            hostWgFlag=spEmuWgFlag;
+            hostWgPreDataGate_f<=spEmuPreDataGate_f;
+            hostWgPulseWidth<=bmem[spEmuWgPulseWidthTblInx+96][15:0];//unit 0.1us
+            hostWgRfFreq<=spEmuWgRfFreq;
+            hostWgFlag<=spEmuWgFlag;
         end
         // 0:aRfmaCko,  1:aRfmaDio1,  2:aRfmaD0,  3:aRfmbCko,  4:aRfmbDio1,  5:aRfmbD0,
         // 6:bRfmaCko,  7:bRfmaDio1,  8:bRfmaD0,  9:bRfmbCko,  10:bRfmbDio1,  11:bRfmbD0,
         //input wire [11:0] rfInA,
         //output [3:0] fibTxA,    		
         //input   wire [3:0] fibRxA,
-        if(bmem[13][7:6]==0)begin//syncTxMode
-            rf1TxData=hostS1TxData_w;
-            rf2TxData=hostS2TxData_w;
-            fib1TxData=hostS1TxData_w;
-            fib2TxData=hostS2TxData_w;
-            fib3TxData=hostS1TxData_w;
-            fib4TxData=hostS2TxData_w;
+        if(bmem[13][7:6]==0)begin//mastere
+            if(bmem[13][8:8]==1)begin
+                fib1TxData<=hostS1TxData_w;
+                rf1TxData<=0;
+                txSyncClkEn1_f<=0;
+            end
+            else begin
+               rf1TxData<=hostS1TxData_w;
+               fib1TxData<=0;
+               txSyncClkEn1_f<=1;
+            end
+            
+            if(bmem[13][10:10]==1)begin
+                rf2TxData<=0;
+                fib2TxData<=hostS2TxData_w;
+                txSyncClkEn2_f<=0;
+            end
+            else begin
+                rf2TxData<=hostS2TxData_w;
+                fib2TxData<=0;
+                txSyncClkEn2_f<=1;
+            end
+            fib3TxData<=0;
+            fib4TxData<=0;
         end
         if(bmem[13][7:6]==1)begin//sub
-            rf1TxData=s1SyncTxData_w;
-            fib1TxData=s1SyncTxData_w;
-            fib2TxData=s1WgRxIn_f;//data through
-            fib3TxData=s1WgRxIn_f;//data through
-            fib4TxData=s1WgRxIn_f;//data through
+            rf1TxData<=s1SyncTxData_w;
+            rf2TxData<=0;
+            fib1TxData<=s1SyncTxData_w;
+            fib2TxData<=s1WgRxIn_f;//data through
+            fib3TxData<=s1WgRxIn_f;//data through
+            fib4TxData<=s1WgRxIn_f;//data through
+            if(bmem[13][21:21]==0)
+                txSyncClkEn1_f<=1; 
+            else               
+                txSyncClkEn1_f<=0; 
+            
         end
         if(bmem[13][7:6]==2)begin//ctr
-            fib1TxData=s1WgRxIn_f;//data through
-            fib2TxData=s1WgRxIn_f;//data through
-            fib3TxData=s1WgRxIn_f;//data through
-            fib4TxData=s1WgRxIn_f;//data through
+            txSyncClkEn1_f<=0; 
+            rf1TxData<=0;
+            rf2TxData<=0;
+            fib1TxData<=s1WgRxIn_f;//data through
+            fib2TxData<=s1WgRxIn_f;//data through
+            fib3TxData<=s1WgRxIn_f;//data through
+            fib4TxData<=s1WgRxIn_f;//data through
         end
         if(bmem[13][7:6]==3)begin//endPoint
-            fib1TxData=s1WgRxIn_f;
-            fib2TxData=s1WgRxIn_f;
-            fib3TxData=s1WgRxIn_f;
-            fib4TxData=s1WgRxIn_f;
+            txSyncClkEn1_f<=0; 
+            rf1TxData<=0;
+            rf2TxData<=0;
+            fib1TxData<=s1WgRxIn_f;
+            fib2TxData<=s1WgRxIn_f;
+            fib3TxData<=s1WgRxIn_f;
+            fib4TxData<=s1WgRxIn_f;
         end
     end
     
@@ -1084,8 +1243,8 @@ input:
     bmem[12][15:0] hostAutoDelayTime
     bmem[12][31:16] hostAutoPreDataPri
 output: 
-    wgActTimeCnt<=0;
-    hostInhibit_f<=1;
+    wgActTimeCnt;
+    hostInhibit_f;
     preTxTime[hostTxSerial[0]]<=realTimeCnt;
 =============================================================*/
     reg [23:0] wgActTimeCnt;
@@ -1107,11 +1266,8 @@ output:
                 hostInhibit_f<=0;
                 preTxTime[hostTxSerial[0]]<=realTimeCnt;
             end
-            hostWgPreDataGate_ff<=hostWgPreDataGate_f;
         end
-        else begin
-            hostWgPreDataGate_ff<=hostWgPreDataGate_f;
-        end
+        hostWgPreDataGate_ff<=hostWgPreDataGate_f;
         //=====================================================
         if(wgActWaitTimeCnt>=bmem[12][15:0])begin    //hostAutoDelayTime
             wgActWidthTimeCnt<=wgActWidthTimeCnt+1;
@@ -1130,12 +1286,15 @@ output:
 purpose: 
     generate hostWgTrigGate_f hostVideoGate_f
 input:
+    wgActTimeCnt//pri time
+    hostWgPulseWidth    
     bmem[6][19:0] vgTimeDelay
     bmem[9][19:0] wgPulseTimeDelay(vg sub)
     bmem[4][31:16] preTrigTime
     bmem[4][15:8] preRfOutTime
 output: 
-    hostWgTrigGate_f hostVideoGate_f
+    hostWgTrigGate_f(high act)
+    hostVideoGate_f(high act)
 =============================================================*/
     reg[19:0] hostVideoGateDelayTimeCnt;
     reg[19:0] hostVideoGatePulseWidth;
@@ -1164,7 +1323,7 @@ output:
             if(hostVideoGateDelayTimeCnt<12800)begin//80us
                 hostVideoGateDelayTimeCnt<=hostVideoGateDelayTimeCnt+1;
                 if(hostVideoGateDelayTimeCnt==1)
-                    hostVideoGateDelayTime<=bmem[6][19:0];
+                    hostVideoGateDelayTime<=bmem[6][19:0];//hostPreTrig to vg-gate time
                 if(hostVideoGateDelayTimeCnt==2)
                     hostWgTrigGateDelayTime<=hostVideoGateDelayTime-bmem[9][19:0];
                 if(hostVideoGateDelayTimeCnt==3)
@@ -1185,7 +1344,7 @@ output:
     end
 /*===========================================================
 purpose: 
-    generate hostPreDataGate_f
+    generate hostPreDataGate_f(for transmit purpose)
 input:
     wgActTimeCnt
     hostCommandData
@@ -1195,10 +1354,13 @@ input:
     hostWgRfFreq
     hostWgPulseWidth
     commDelayTime
+    hostS1RxPackCnt
 output: 
-    hostTxSerial
-    hostS1TxData1[3:0][15:0]
-    hostS2TxData1[3:0][15:0]
+    hostPreDataGate_f(low act)
+    hostTxSerial(for calculate response back time purpose)
+    hostS1TxData[3:0][15:0]
+    hostS2TxData[3:0][15:0]
+
 =============================================================*/
     reg[7:0] hostPreDataGateTimeCnt;
     reg hostPreDataGate_f;
@@ -1215,6 +1377,8 @@ output:
     reg[31:0] hostSxTxStatusBufCnt;
     reg[0:0] debug0_f;
     reg[0:0] debug1_f;
+    reg[0:0] hostSxRepeatCnt;
+    reg[8:0] hostSxRepeatBuf;
     
     always @(posedge clk160m) begin
         if(wgActTimeCnt==0)begin
@@ -1222,7 +1386,7 @@ output:
             hostPreDataGateTimeCnt<=1;
             hostTxSerial<=hostTxSerial+1;
             //=========================================
-            hostS1TxData0<={hostTxSerial,8'h00};
+            hostS1TxData0<={hostTxSerial,8'h00};//8:8 TxSerialCnt,4m clock sync delay time
             ///hostS1TxData1[15:0]<=hostCommandData;
             hostS1TxData2[15:8]<=hostS1SoundData;
             hostS1TxData2[7]<=hostInhibit_f;
@@ -1235,36 +1399,33 @@ output:
             hostS2TxData2[7]<=hostInhibit_f;
             hostS2TxData2[6]<=bmem[2][27];//wgProtectBit
             hostS2TxData2[5:0]<=hostWgRfFreq;
-                    //============================================
-            if(mem[101]==hostSxTxStatusBuf)begin
-                hostS1TxData1<={4'b0000,hostS1RxPackCnt[2:0],9'b111111010};
-                hostS2TxData1<={4'b0000,hostS2RxPackCnt[2:0],9'b111111011};
-                debug0_f<=debug0_f+1;
-            end    
+            //============================================
+            hostSxRepeatCnt<=hostSxRepeatCnt+1;
+            if(hostSxRepeatCnt==0)begin
+                if(mem[101]==hostSxTxStatusBuf)begin //no sync status data
+                    hostS1TxData1<={hostSxTxStatusBufCnt[1:0],2'b00,hostS1RxPackCnt[2:0],9'b111111111}; //2:2:3:1:8 txSerailCnt,txId,s1RxPackCnt,dataDisable_f,data
+                    hostS2TxData1<={hostSxTxStatusBufCnt[1:0],2'b00,hostS2RxPackCnt[2:0],9'b111111111};
+                    hostSxRepeatBuf<=9'b111111111;
+                    end    
+                else begin
+                    hostS1TxData1<={hostSxTxStatusBufCnt[1:0],2'b00,hostS1RxPackCnt[2:0],mem[101][8:0]};
+                    hostS2TxData1<={hostSxTxStatusBufCnt[1:0],2'b00,hostS2RxPackCnt[2:0],mem[101][8:0]};
+                    hostSxRepeatBuf<=mem[101][8:0];
+                    hostSxTxStatusBuf<=mem[101];
+                    rmem[42]<=hostSxTxStatusBufCnt;//txed flag
+                    hostSxTxStatusBufCnt<=hostSxTxStatusBufCnt+1;   
+                    test1_f<=test1_f^1;        
+                end    
+            end
             else begin
-                hostS1TxData1<={4'b0000,hostS1RxPackCnt[2:0],mem[101][8:0]};
-                hostS2TxData1<={4'b0000,hostS2RxPackCnt[2:0],mem[101][8:0]};
-                hostSxTxStatusBuf<=mem[101];
-                rmem[42]<=hostSxTxStatusBufCnt;
-                hostSxTxStatusBufCnt<=hostSxTxStatusBufCnt+1;           
-                debug1_f<=debug1_f+1;
-            end    
-            /*
-                rmem[hostS1RxCommandDataCnt+96]<=hostS1RxData1_wb;
-                hostS1RxCommandDataCnt<=hostS1RxCommandDataCnt+1;
-                rmem[44]<=hostS1RxCommandDataCnt;
-                    */
-                        
-                    //============================================
-            
-            
-            
-            
+                hostS1TxData1<={hostSxTxStatusBufCnt[1:0],2'b00,hostS1RxPackCnt[2:0],hostSxRepeatBuf};
+                hostS2TxData1<={hostSxTxStatusBufCnt[1:0],2'b00,hostS2RxPackCnt[2:0],hostSxRepeatBuf};
+            end
             
             if(hostInhibit_f)begin
                 hostS1TxData3[15:11]<=5'b0000;
-                hostS1TxData3[10:0]<=s1CommDelayTime[11:1];
                 hostS2TxData3[15:11]<=5'b0000;
+                hostS1TxData3[10:0]<=s1CommDelayTime[11:1];
                 hostS2TxData3[10:0]<=s2CommDelayTime[11:1];
             end
             else begin
@@ -1587,6 +1748,7 @@ output:
     reg[31:0] s1TxStatusBuf;
     reg[31:0] s1TxStatusBufCnt;
     reg[4:0] s1RxCommandDataCnt;
+    reg test1_f;
     
     always @(posedge clk160m) begin
         if(s1SyncRxPack_f)begin
@@ -1597,24 +1759,29 @@ output:
                     rmem[40][15:8]<=s1PackRxCnt;
                     s1SyncRespDelayTimeCnt<={8'b0000_0000,s1SyncRxData0_reg[7:0]};//<<debug    
                     s1SyncPreDataGate_f<=1;
-                    s1SyncTxData0<=s1SyncRxData0_wb;
+                    s1SyncTxData0<=s1SyncRxData0_reg;
                     //s1TxData1<=s1StatusData;
                     s1SyncTxData2[15:8]<=s1SoundData;
                     s1SyncTxData3[15:0]<=0;
+                    
+                    rmem[47]<={s1SyncRxData1_reg,s1SyncRxData0_reg};
+                    rmem[48]<={s1SyncRxData3_reg,s1SyncRxData2_reg};
+                    
                     //============================================
                     if(mem[100]==s1TxStatusBuf)begin
-                        s1SyncTxData1<={4'b0000,s1FibRxPack_cnt[2:0],9'b111111111};
+                        s1SyncTxData1<={4'b0001,s1SyncRxPackCnt[2:0],9'b111111111};
                     end    
                     else begin
-                        s1SyncTxData1<={4'b0000,s1FibRxPack_cnt[2:0],mem[100][8:0]};
+                        s1SyncTxData1<={4'b0001,s1SyncRxPackCnt[2:0],mem[100][8:0]};
                         s1TxStatusBuf<=mem[100];
                         rmem[41]<=s1TxStatusBufCnt;
                         s1TxStatusBufCnt<=s1TxStatusBufCnt+1;           
-                    end    
-                    smem1[s1RxCommandDataCnt]<=s1SyncRxData1_reg;
-                    s1RxCommandDataCnt<=s1RxCommandDataCnt+1;
-                    rmem[43]<=s1RxCommandDataCnt;
-                    
+                    end  
+                    if(!s1SyncRxData1_reg[8:8])begin  
+                        smem1[s1RxCommandDataCnt]<=s1SyncRxData1_reg;
+                        s1RxCommandDataCnt<=s1RxCommandDataCnt+1;
+                        rmem[43]<=s1RxCommandDataCnt;
+                    end
                     //============================================
                 end
             end
@@ -1648,7 +1815,7 @@ input:
     s1WgRxData2_reg
     s1WgRxData3_reg
 output: 
-    s1WgGate_f
+    s1WgGate_f (low act)
     wgData[23:0]
     rmem[5]
 =============================================================*/
@@ -1673,14 +1840,17 @@ output:
                     testBuf[1]=!testBuf[1];
                     s1WgPackRxCnt<=s1WgPackRxCnt+1;
                     rmem[40][23:16]<=s1WgPackRxCnt;
-                    s1WgRespDelayTimeCnt<={8'b0000_0000,s1WgRxData0_reg[7:0]};    
+                    if(mem[13][13:12]==2)//local
+                        s1WgRespDelayTimeCnt<=s1WgRxData0_reg[7:0];    
+                    else    
+                        s1WgRespDelayTimeCnt<=s1VideoGateCommPathTime+s1WgRxData0_reg[7:0];    
                     s1WgGate_f<=1;
                     s1WgInhibit_f<=s1WgRxData2_reg[7];
                     s1WgSspaProtect_f<=s1WgRxData2_reg[6];
                     s1WgRfFreq<=s1WgRxData2_reg[5:0];
                     //============================================
-                    if(s1WgRxData2_reg[7])begin
-                        s1VideoGateCommPathTime<={9'b000000000,s1WgRxData3_reg[10:0]};
+                    if(s1WgRxData2_reg[7])begin 
+                        s1VideoGateCommPathTime<={9'b000000000,s1WgRxData3_reg[10:0]};  
                         //s1VideoGateCommPathTime<=0;
                     end    
                     else begin    
@@ -1688,11 +1858,16 @@ output:
                     end    
                 end
                 if(s1WgRxPackHTimeCnt==1)begin
+                    if(mem[13][13:12]!=2)
+                        s1WgRespDelayTimeCnt<=s1WgRespDelayTimeCnt+fpgaIdDelay;
                     wgData[23:23]<=s1WgSspaProtect_f;
                     wgData[22:16]<=7'b000_0000;
                     wgData[15:8]<={2'b00,s1WgRfFreq};
                     wgData[7:6]<=2'b11;
                     wgData[5:0]<=s1WgRfFreq ^ 6'b11_1111;
+                end
+                if(s1WgRxPackHTimeCnt==2)begin
+                    rmem[49]<={s1WgRespDelayTime,s1WgRespDelayTimeCnt};
                 end
             end
         end    
@@ -1700,7 +1875,7 @@ output:
             testBuf[0]<=1;
             s1WgRxPackHTimeCnt<=0;
             s1WgPreDataGateTimeCnt<=s1WgPreDataGateTimeCnt+1;
-            if(s1WgPreDataGateTimeCnt==16)//mem[8][31:16])//1us
+            if(s1WgPreDataGateTimeCnt==16)
                 s1WgGate_f<=1;
             if(s1WgRespDelayTimeCnt<19200)begin//120us
                 s1WgRespDelayTimeCnt<=s1WgRespDelayTimeCnt+1;
@@ -1724,6 +1899,7 @@ purpose:
     generate s1WgTrigGate_f and s1VideoGate_f
 input:
     s1WgGate_f
+    s1VideoGateCommPathTime
     bmem[10][19:0] s1VgTimeDelay
     bmem[9][19:0] wgPulseTimeDelay(vg sub)
     bmem[4][31:16] preTrigTime
@@ -1747,7 +1923,7 @@ output:
             s1VideoGateDelayTimeCnt<=s1VideoGateDelayTimeCnt+1;
         if(!s1WgGate_f)begin
             if(s1WgGate_ff)begin//H2L
-                if(!s1Inhibit_f)begin
+                if(!s1WgInhibit_f)begin
                     s1VideoGateDelayTimeCnt<=1;
                     s1VideoGate_f<=0;
                     s1VideoGateWidthTime<=s1SyncWgPulseWidth;
@@ -1777,12 +1953,12 @@ output:
         if(s1VideoGateDelayTimeCnt==5)
             s1WgTrigGateDelayTime<=s1WgTrigGateDelayTime-{bmem[4][15:8],4'b0000};
         if(s1VideoGateDelayTimeCnt==s1WgTrigGateDelayTime)begin
-            if(!s1Inhibit_f)
+            if(!s1WgInhibit_f)
                 s1WgTrigGate_f<=1;
             s1WgTrigGateWidthTimeCnt<=1;
         end   
         if(s1VideoGateDelayTimeCnt==s1VideoGateDelayTime)begin
-            if(!s1Inhibit_f)
+            if(!s1WgInhibit_f)
                 s1VideoGate_f<=1;
             s1VideoGateWidthTimeCnt<=1;
         end   
@@ -1797,7 +1973,7 @@ output:
 purpose:
     generate wg signale
 input:
-    wgTrigGate_f
+    s1WgTrigGate_f
     bmem[10][19:0] s1VgTimeDelay
     bmem[9][19:0] wgPulseTimeDelay(vg sub)
     bmem[4][31:16] preTrigTime
@@ -1821,13 +1997,13 @@ output:
     reg[19:0] wgRfoutEndTime;
     reg[19:0] wgTrigEndTime;
     always @(posedge clk160m) begin
-        if(wgTrigGate_f)begin
-            wgBaseTimeCnt<=0;
-            wgTimeClk<=0;
-            wgClk_f<=0;
-            wgRfout_f <= 0;
-            wgTrig_f <= 1;
-        end    
+        if(s1WgTrigGate_f)begin
+                wgBaseTimeCnt<=0;
+                wgTimeClk<=0;
+                wgClk_f<=0;
+                wgRfout_f <= 0;
+                wgTrig_f <= 1;
+        end
         else begin
             wgBaseTimeCnt<=wgBaseTimeCnt+1;
             wgRfoutTimeCnt<=wgRfoutTimeCnt+1;
@@ -1876,89 +2052,89 @@ output:
 // la register assign
 //===================================================
     reg[15:0] laChR;
-    always @* 
-    begin
+    //always @* 
+    always @(posedge clk160m) begin
         if(bmem[5][19:16] == 4'b0000)begin
-            laChR[0] = hostWgPreDataGate_f;
-            laChR[1] = hostPreDataGate_f;
-            laChR[2] = hostWgTrigGate_f;
-            laChR[3] = s1WgTrigGate_f;
-            laChR[4] = hostVideoGate_f;
-            laChR[5] = s1VideoGate_f;
-            laChR[6] = hostS1TxData_w;
-            laChR[7] = s1SyncPreDataGate_f;
+            laChR[0] <= hostWgPreDataGate_f;
+            laChR[1] <= hostPreDataGate_f;
+            laChR[2] <= hostWgTrigGate_f;
+            laChR[3] <= s1WgTrigGate_f;
+            laChR[4] <= hostVideoGate_f;
+            laChR[5] <= s1VideoGate_f;
+            laChR[6] <= hostS1TxData_w;
+            laChR[7] <= s1SyncPreDataGate_f;
             //===========================
         end
         if(bmem[5][19:16] == 4'b0001)begin
-            laChR[0] = hostWgTrigGate_f;
-            laChR[1] = s1WgTrigGate_f;
-            laChR[2] = wgDataBit_f;
-            laChR[3] = wgClk_f;
-            laChR[4] = wgTrig_f;
-            laChR[5] = wgRfout_f; 
-            laChR[6] = hostVideoGate_f;
-            laChR[7] = s1VideoGate_f;
+            laChR[0] <= hostWgTrigGate_f;
+            laChR[1] <= s1WgTrigGate_f;
+            laChR[2] <= wgDataBit_f;
+            laChR[3] <= wgClk_f;
+            laChR[4] <= wgTrig_f;
+            laChR[5] <= wgRfout_f; 
+            laChR[6] <= hostVideoGate_f;
+            laChR[7] <= s1VideoGate_f;
             //===========================
         end  
         if(bmem[5][19:16] == 4'b0010)begin
-            laChR[0] = hostS1TxData_w;
-            laChR[1] = s1SyncTxData_w;
-            laChR[2] = hostS1RxIn_f;
-            laChR[3] = hostS2RxIn_f;
-            laChR[4] = s1SyncRxIn_f;
-            laChR[5] = s1SyncRxPack_f; 
-            laChR[6] = hostS1RxPack_w;
-            laChR[7] = hostS2RxPack_w;
+            laChR[0] <= hostS1TxData_w;
+            laChR[1] <= s1SyncTxData_w;
+            laChR[2] <= hostS1RxIn_f;
+            laChR[3] <= hostS2RxIn_f;
+            laChR[4] <= s1SyncRxIn_f;
+            laChR[5] <= s1SyncRxPack_f; 
+            laChR[6] <= hostS1RxPack_w;
+            laChR[7] <= hostS2RxPack_w;
             //===========================
         end  
         if(bmem[5][19:16] == 4'b0011)begin
-            laChR[0] = hostVideoGate_f;
-            laChR[1] = s1VideoGate_f;
-            laChR[2] = hostWgTrigGate_f;
-            laChR[3] = s1WgTrigGate_f;
-            laChR[4] = hostS1RxIn_f;
-            laChR[5] = s1LocalRxIn_f; 
-            laChR[6] = hostS1RxClk4m_w;
-            laChR[7] = s1LocalRxClk4m_w;
+            laChR[0] <= hostVideoGate_f;
+            laChR[1] <= s1VideoGate_f;
+            laChR[2] <= hostWgTrigGate_f;
+            laChR[3] <= s1WgTrigGate_f;
+            laChR[4] <= hostS1RxIn_f;
+            laChR[5] <= s1LocalRxIn_f; 
+            laChR[6] <= hostS1RxClk4m_w;
+            laChR[7] <= s1LocalRxClk4m_w;
             //===========================
         end  
         if(bmem[5][19:16] == 4'b0100)begin
-            laChR[0] = s1FibRxIn_f;
-            laChR[1] = s1FibRxPack_w;
-            laChR[2] = s1RfRxIn_f;
-            laChR[3] = s1RfRxPack_w;
-            laChR[4] = s1LocalRxIn_f;
-            laChR[5] = s1LocalRxPack_w; 
-            laChR[6] = s1WgRxIn_f;
-            laChR[7] = s1WgRxPack_f;
-            //laChR[0] = hdfioA[0];
-            //laChR[1] = hdfioA[1];
-            //laChR[2] = hdfioA[2];
-            //laChR[3] = hdfioA[3];
-            //laChR[4] = hdfioA[4];
-            //laChR[5] = hdfioA[5]; 
-            //laChR[6] = hdfioA[6];
-            //laChR[7] = hdfioA[7];
+            laChR[0] <= s1FibRxIn_f;
+            laChR[1] <= s1FibRxPack_w;
+            laChR[2] <= s1RfRxIn_f;
+            laChR[3] <= s1RfRxPack_w;
+            laChR[4] <= s1LocalRxIn_f;
+            laChR[5] <= s1LocalRxPack_w; 
+            laChR[6] <= s1WgRxIn_f;
+            laChR[7] <= s1WgRxPack_f;
+            //laChR[0] = hdfioiA[0];
+            //laChR[1] = hdfioiA[1];
+            //laChR[2] = hdfioiA[2];
+            //laChR[3] = hdfioiA[3];
+            //laChR[4] = hdfioiA[4];
+            //laChR[5] = hdfioiA[5]; 
+            //laChR[6] = hdfioiA[6];
+            //laChR[7] = hdfioiA[7];
             //===========================
         end  
         if(bmem[5][19:16] == 4'b0101)begin
-            laChR[0] = s1WgGate_f;
-            laChR[1] = s1WgInhibit_f;
-            laChR[2] = s1WgTrigGate_f;
-            laChR[3] = s1VideoGate_f;
-            laChR[4] = testBuf[0];
-            laChR[5] = testBuf[1];
-            laChR[6] = testBuf[2];
-            laChR[7] = testBuf[3];
+            laChR[0] <= s1WgGate_f;
+            laChR[1] <= s1WgInhibit_f;
+            laChR[2] <= s1WgTrigGate_f;
+            laChR[3] <= s1VideoGate_f;
+            laChR[4] <= testBuf[0];
+            laChR[5] <= testBuf[1];
+            laChR[6] <= testBuf[2];
+            laChR[7] <= testBuf[3];
         
         
 
-            //laChR[0] = hdfioA[8];
-            //laChR[1] = hdfioA[9];
-            //laChR[2] = hdfioA[10];
-            //laChR[3] = hdfioA[11];
-            //laChR[4] = hdfioA[12];
-            //laChR[5] = hdfioA[13];
+            //laChR[0] = hdfioiA[8];
+            //laChR[1] = hdfioiA[9];
+            //laChR[2] = hdfioiA[10];
+            //laChR[3] = hdfioiA[11];
+            //laChR[4] = hdfioiA[12];
+            //laChR[5] = hdfioiA[13];
             //laChR[6] = wgRfOut;
             //laChR[7] = debugPin1_f;
             //===========================
@@ -1973,118 +2149,132 @@ output:
         // 0:aRfmaDio2,  1:aRfmbDio2, 2:bRfmaDio2,  3:bRfmbDio2,        
         
         if(bmem[5][19:16] == 4'b0110)begin
-            laChR[0] = rfInA[0]; //1 RFMA_CKO
-            laChR[1] = rfOutA[0];//1 RFMA_DIO2 txd 
-            laChR[2] = rfInA[4]; //1 RFMB_DIO1  rxd
-            laChR[3] = rfInA[6]; //2 RFMA_CKO
-            laChR[4] = rfOutA[2];//2 RFMA_DIO2 txd
-            laChR[5] = rfInA[10];//2 RFMB_DIO1 rxd
-            laChR[6] = gpsPps;
-            laChR[7] = hostS1TxDataClk_w;
+            laChR[0] <= rfInA[0]; //1 RFMA_CKO
+            laChR[1] <= rfOutA[0];//1 RFMA_DIO2 txd 
+            laChR[2] <= rfInA[4]; //1 RFMB_DIO1  rxd
+            laChR[3] <= rfInA[6]; //2 RFMA_CKO
+            laChR[4] <= rfOutA[2];//2 RFMA_DIO2 txd
+            laChR[5] <= rfInA[10];//2 RFMB_DIO1 rxd
+            laChR[6] <= gpsPps;
+            laChR[7] <= hostS1TxDataClk_w;
             //===========================
         end  
           
         if(bmem[5][19:16] == 4'b0111)begin
-            laChR[0] = fibTxA[0];
-            laChR[1] = fibRxA[0];
-            laChR[2] = fibTxA[1];
-            laChR[3] = fibRxA[1];
-            laChR[4] = fibTxA[2];
-            laChR[5] = fibRxA[2];
-            laChR[6] = fibTxA[3];
-            laChR[7] = fibRxA[3];
+            laChR[0] <= fibTxA[0];
+            laChR[1] <= fibRxA[0];
+            laChR[2] <= fibTxA[1];
+            laChR[3] <= fibRxA[1];
+            laChR[4] <= fibTxA[2];
+            laChR[5] <= fibRxA[2];
+            laChR[6] <= fibTxA[3];
+            laChR[7] <= fibRxA[3];
             //===========================
         end
           
           
         if(bmem[5][19:16] == 4'b1000)begin
-            laChR[0] = fibTxB1;
-            laChR[1] = fibRxB1;
-            laChR[2] = fibTxB3;
-            laChR[3] = fibRxB3;
-            laChR[4] = fibTxB5;
-            laChR[5] = fibRxB5; 
-            laChR[6] = fibTxB7;
-            laChR[7] = fibRxB7;
+            laChR[0] <= fibTxB1;
+            laChR[1] <= fibRxB1;
+            laChR[2] <= fibTxB3;
+            laChR[3] <= fibRxB3;
+            laChR[4] <= fibTxB5;
+            laChR[5] <= fibRxB5; 
+            laChR[6] <= fibTxB7;
+            laChR[7] <= fibRxB7;
             //===========================
         end  
         if(bmem[5][19:16] == 4'b1001)begin
-            laChR[0] = txSysData1_load_w;
-            laChR[1] = txSysData1_clk_w;
-            laChR[2] = txSysData1_data_w;
-            laChR[3] = rxSysData1_in_f;;
-            laChR[4] = rxSysData1_clk_w;
-            laChR[5] = rxSysData1_pack_w; 
-            laChR[6] = hostS1TxEnd_w;
-            laChR[7] = hostS1RxPack_w;
+            laChR[0] <= txSysData1_load_w;
+            laChR[1] <= txSysData1_clk_w;
+            laChR[2] <= txSysData1_data_w;
+            laChR[3] <= rxSysData1_in_f;;
+            laChR[4] <= rxSysData1_clk_w;
+            laChR[5] <= rxSysData1_pack_w; 
+            laChR[6] <= hostS1TxEnd_w;
+            laChR[7] <= hostS1RxPack_w;
             //===========================
         end  
         
         if(bmem[5][19:16] == 4'b1010)begin
-            laChR[0] = a_snd_clk;
-            laChR[1] = a_snd_tx;
-            laChR[2] = aSndRx;
-            laChR[3] = b_snd_clk;
-            laChR[4] = b_snd_tx;
-            laChR[5] = bSndRx;
-            laChR[6] = 0;
-            laChR[7] = 0;
+            laChR[0] <= a_snd_clk;
+            laChR[1] <= a_snd_tx;
+            laChR[2] <= aSndRx;
+            laChR[3] <= b_snd_clk;
+            laChR[4] <= b_snd_tx;
+            laChR[5] <= bSndRx;
+            laChR[6] <= 0;
+            laChR[7] <= 0;
             //===========================
         end  
         
         if(bmem[5][19:16] == 4'b1011)begin
-            laChR[0] = inpChk0;     //rs485Di fpga->485
-            laChR[1] = inpChk1;     //rs485Ro 485->fpga
-            laChR[2] = inpChkA[3];  //rs485De fpga->485
-            laChR[3] = inpChk2;     //ipcRx  fpga->ipc
-            laChR[4] = inpChk3;     //ipcTx  ipc->fpda
-            laChR[5] = s1WgRxIn_f;
-            laChR[6] = s1WgRxPack_f;
-            laChR[7] = 0;
+            laChR[0] <= inpChk0;     //rs485Di fpga->485
+            laChR[1] <= inpChk1;     //rs485Ro 485->fpga
+            laChR[2] <= inpChkA[3];  //rs485De fpga->485
+            laChR[3] <= inpChk2;     //ipcRx  fpga->ipc
+            laChR[4] <= inpChk3;     //ipcTx  ipc->fpda
+            laChR[5] <= s1WgRxIn_f;
+            laChR[6] <= s1WgRxPack_f;
+            laChR[7] <= 0;
             //===========================
         end  
         if(bmem[5][19:16] == 4'b1100)begin
-            laChR[0] = hdfoR[0];
-            laChR[1] = hdfoR[1];
-            laChR[2] = hdfoR[2];
-            laChR[3] = hdfoR[3];
-            laChR[4] = hdfoR[4];
-            laChR[5] = hdfoR[5];
-            laChR[6] = hdfoR[6];
-            laChR[7] = hdfoR[7];
+            laChR[0] <= hdfoR[0];
+            laChR[1] <= hdfoR[1];
+            laChR[2] <= hdfoR[2];
+            laChR[3] <= hdfoR[3];
+            laChR[4] <= hdfoR[4];
+            laChR[5] <= hdfoR[5];
+            laChR[6] <= hdfoR[6];
+            laChR[7] <= hdfoR[7];
             //===========================
         end  
         if(bmem[5][19:16] == 4'b1101)begin
-            laChR[0] = hdfioA[0];
-            laChR[1] = hdfioA[1];
-            laChR[2] = hdfioA[2];
-            laChR[3] = hdfioA[3];
-            laChR[4] = hdfioA[4];
-            laChR[5] = hdfioA[5];
-            laChR[6] = hdfioA[6];
-            laChR[7] = hdfioA[7];
+            laChR[0] <= hdfioIA[0];
+            laChR[1] <= hdfioIA[1];
+            laChR[2] <= hdfioIA[2];
+            laChR[3] <= hdfioIA[3];
+            laChR[4] <= hdfioIA[4];
+            laChR[5] <= hdfioIA[5];
+            laChR[6] <= hdfioIA[6];
+            laChR[7] <= hdfioIA[7];
             //===========================
         end  
         if(bmem[5][19:16] == 4'b1110)begin
+            /*
             laChR[0] = debug0_f;
             laChR[1] = debug1_f;
-            laChR[2] = hdfioA[8];
-            laChR[3] = hdfioA[9];
-            laChR[4] = hdfioA[10];
-            laChR[5] = hdfioA[11];
-            laChR[6] = hdfioA[12];
-            laChR[7] = hdfioA[13];
+            laChR[2] = hdfioIA[8];
+            laChR[3] = hdfioIA[9];
+            laChR[4] = hdfioIA[10];
+            laChR[5] = hdfioIA[11];
+            laChR[6] = hdfioIA[12];
+            laChR[7] = hdfioIA[13];
+                        */
+                        
+            laChR[0] <= rxSysData1_in_f;
+            laChR[1] <= rxSysData1_pack_w;
+            laChR[2] <= rxSysData2_in_f;
+            laChR[3] <= rxSysData2_pack_w;
+            laChR[4] <= rxSysData3_in_f;
+            laChR[5] <= rxSysData3_pack_w;
+            laChR[6] <= rxSysData4_in_f;
+            laChR[7] <= rxSysData4_pack_w;
+                        
+                        
             //===========================
         end  
         if(bmem[5][19:16] == 4'b1111)begin
-            laChR[0] = mem[17][8];
-            laChR[1] = mem[17][9];
-            laChR[2] = mem[17][10];
-            laChR[3] = mem[17][11];
-            laChR[4] = s1LocalRxIn_f;
-            laChR[5] = s1LocalRxPack_w; 
-            laChR[6] = s1SyncRxPack_f;
-            laChR[7] = s1WgTrigGate_f;
+            laChR[0] <= mem[17][8];
+            //laChR[1] <= mem[17][9];
+            laChR[1] <= test1_f;
+            laChR[2] <= mem[17][10];
+            laChR[3] <= mem[17][11];
+            laChR[4] <= s1LocalRxIn_f;
+            laChR[5] <= s1LocalRxPack_w; 
+            laChR[6] <= s1SyncRxPack_f;
+            laChR[7] <= s1WgTrigGate_f;
             //===========================
         end  
         
@@ -2103,8 +2293,6 @@ assign ledV3=baseTimer[24];
 assign ledV4=base160Timer[25];
 assign laCh[15:0]=laChR[15:0];
 assign hdfoA=hdfoR;
-
-
 assign fibTxA[0]=fib1TxData;
 assign fibTxA[1]=fib2TxData;
 assign fibTxA[2]=fib3TxData;
@@ -2112,14 +2300,87 @@ assign fibTxA[3]=fib4TxData;
 assign rfOutA[0]=rf1TxData;
 assign rfOutA[2]=rf2TxData;
 assign fibTxB1=fibTxB1_f;
-assign fibTxB3=fibTxB1_f;
-assign fibTxB5=fibTxB1_f;
-assign fibTxB7=fibTxB1_f;
+assign fibTxB3=fibTxB2_f;
+assign fibTxB5=fibTxB3_f;
+assign fibTxB7=fibTxB4_f;
 assign wgRfOut=wgRfout_f;
 
 
+assign hdfioA[0] = hdfioDirA[0]?1'bz:hdfioOA[0];
+assign hdfioIA[0] = hdfioA[0];
+assign hdfioA[1] = hdfioDirA[1]?1'bz:hdfioOA[1];
+assign hdfioIA[1] = hdfioA[1];
+assign hdfioA[2] = hdfioDirA[2]?1'bz:hdfioOA[2];
+assign hdfioIA[2] = hdfioA[2];
+assign hdfioA[3] = hdfioDirA[3]?1'bz:hdfioOA[3];
+assign hdfioIA[3] = hdfioA[3];
 
+assign hdfioA[4] = hdfioDirA[4]?1'bz:hdfioOA[4];
+assign hdfioIA[4] = hdfioA[4];
+assign hdfioA[5] = hdfioDirA[5]?1'bz:hdfioOA[5];
+assign hdfioIA[5] = hdfioA[5];
+assign hdfioA[6] = hdfioDirA[6]?1'bz:hdfioOA[6];
+assign hdfioIA[6] = hdfioA[6];
+assign hdfioA[7] = hdfioDirA[7]?1'bz:hdfioOA[7];
+assign hdfioIA[7] = hdfioA[7];
+
+assign hdfioA[8] = hdfioDirA[8]?1'bz:hdfioOA[8];
+assign hdfioIA[8] = hdfioA[8];
+assign hdfioA[9] = hdfioDirA[9]?1'bz:hdfioOA[9];
+assign hdfioIA[9] = hdfioA[9];
+assign hdfioA[10] = hdfioDirA[10]?1'bz:hdfioOA[10];
+assign hdfioIA[10] = hdfioA[10];
+assign hdfioA[11] = hdfioDirA[11]?1'bz:hdfioOA[11];
+assign hdfioIA[11] = hdfioA[11];
+
+assign hdfioA[12] = hdfioDirA[12]?1'bz:hdfioOA[12];
+assign hdfioIA[12] = hdfioA[12];
+assign hdfioA[13] = hdfioDirA[13]?1'bz:hdfioOA[13];
+assign hdfioIA[13] = hdfioA[13];
+assign hdfioA[14] = hdfioDirA[14]?1'bz:hdfioOA[14];
+assign hdfioIA[14] = hdfioA[14];
+assign hdfioA[15] = hdfioDirA[15]?1'bz:hdfioOA[15];
+assign hdfioIA[15] = hdfioA[15];
+
+assign hdfioA[16] = hdfioDirA[16]?1'bz:hdfioOA[16];
+assign hdfioIA[16] = hdfioA[16];
+assign hdfioA[17] = hdfioDirA[17]?1'bz:hdfioOA[17];
+assign hdfioIA[17] = hdfioA[17];
+assign hdfioA[18] = hdfioDirA[18]?1'bz:hdfioOA[18];
+assign hdfioIA[18] = hdfioA[18];
+assign hdfioA[19] = hdfioDirA[15]?1'bz:hdfioOA[19];
+assign hdfioIA[19] = hdfioA[19];
+
+
+reg wgRfout_of;
+reg wgTrig_of;
+reg wgDataBit_of;
+reg wgClk_of;
+
+    always @* begin
+        if(mem[0][25])begin
+            wgRfout_of<=wgRfout_f;
+        end
+        else begin
+            wgRfout_of<=0;
+        end
+    end        
     
+
+    always @* begin
+        if(mem[0][24])begin
+            wgTrig_of<=wgTrig_f;
+            wgDataBit_of<=wgDataBit_f;
+            wgClk_of<=wgClk_f;
+        end
+        else begin
+            wgTrig_of<=1;
+            wgDataBit_of<=0;
+            wgClk_of<=0;
+        end
+    end        
+
+
 
 //===================================================
 // timer cnt 
@@ -2132,6 +2393,11 @@ assign wgRfOut=wgRfout_f;
     always @(posedge clk160m)begin
         base160Timer <= base160Timer + 1'b1;
     end
+
+    always @(posedge clk160m)begin
+        rmem[46][19:0] <= hdfioIA[19:0];
+    end
+
       
 //===================================================
 // ram process 
@@ -2221,7 +2487,8 @@ assign wgRfOut=wgRfout_f;
     TXPROC hostS1TxProc(
         .clk160m_i(clk160m),
         .preDataGate_i(hostPreDataGate_f),
-        .txCon_i(bmem[13][16]),
+        //.txCon_i(bmem[13][16]),
+        .txCon_i(1),
         .txData0_ib(hostS1TxData0),
         .txData1_ib(hostS1TxData1),
         .txData2_ib(hostS1TxData2),
@@ -2264,6 +2531,7 @@ assign wgRfOut=wgRfout_f;
     RXPROC hostS1RxProc(
         .clk160m_i(clk160m),
         .rxData_i(hostS1RxIn_f),
+        .chkId_i(rxProcChkId),
         .rxClk4m_o(hostS1RxClk4m_w),
         .rxPack_o(hostS1RxPack_w),  //1us high
         .rxData0_ob(hostS1RxData0_wb),
@@ -2282,6 +2550,7 @@ assign wgRfOut=wgRfout_f;
     RXPROC hostS2RxProc(
         .clk160m_i(clk160m),
         .rxData_i(hostS2RxIn_f),
+        .chkId_i(rxProcChkId),
         .rxClk4m_o(hostS2RxClk4m_w),
         .rxPack_o(hostS2RxPack_w),  //1us high
         .rxData0_ob(hostS2RxData0_wb),
@@ -2298,33 +2567,14 @@ assign wgRfOut=wgRfout_f;
         .txData1_ib(s1SyncTxData1),
         .txData2_ib(s1SyncTxData2),
         .txData3_ib(s1SyncTxData3),
-        .txSyncClkEn_i(0),
-        .txSyncClk_i(0),
+        .txSyncClkEn_i(txSyncClkEn1_f),
+        .txSyncClk_i(rfInA[0]),
         .txLoad_o(s1SyncTxLoad_w),				
         .txData_o(s1SyncTxData_w),				
         .txEnd_o(s1SyncTxEnd_w),				
         .txDataClk_o(s1SyncTxDataClk_w)				
     );
 
-
-    wire s1SyncRxClk4m_w;
-    wire s1SyncRxPack_w;
-    wire[15:0] s1SyncRxData0_wb;
-    wire[15:0] s1SyncRxData1_wb;
-    wire[15:0] s1SyncRxData2_wb;
-    wire[15:0] s1SyncRxData3_wb;
-    RXPROC s1RxProc(
-        .clk160m_i(clk160m),
-        .rxData_i(s1SyncRxIn_f),
-        //.rxData_i(s1EmuRxDataBuf[3][31]),
-        //.rxData_i(s1RxBit),
-        .rxClk4m_o(s1SyncRxClk4m_w),
-        .rxPack_o(s1SyncRxPack_w),  //1us high
-        .rxData0_ob(s1SyncRxData0_wb),
-        .rxData1_ob(s1SyncRxData1_wb),
-        .rxData2_ob(s1SyncRxData2_wb),
-        .rxData3_ob(s1SyncRxData3_wb)
-    );
 
 
     //====================================
@@ -2337,8 +2587,7 @@ assign wgRfOut=wgRfout_f;
     RXPROC s1FibRxProc(
         .clk160m_i(clk160m),
         .rxData_i(s1FibRxIn_f),
-        //.rxData_i(s1EmuRxDataBuf[3][31]),
-        //.rxData_i(s1RxBit),
+        .chkId_i(rxProcChkId),
         .rxClk4m_o(s1FibRxClk4m_w),
         .rxPack_o(s1FibRxPack_w),  //1us high
         .rxData0_ob(s1FibRxData0_wb),
@@ -2357,8 +2606,7 @@ assign wgRfOut=wgRfout_f;
     RXPROC s1RfRxProc(
         .clk160m_i(clk160m),
         .rxData_i(s1RfRxIn_f),
-        //.rxData_i(s1EmuRxDataBuf[3][31]),
-        //.rxData_i(s1RxBit),
+        .chkId_i(rxProcChkId),
         .rxClk4m_o(s1RfRxClk4m_w),
         .rxPack_o(s1RfRxPack_w),  //1us high
         .rxData0_ob(s1RfRxData0_wb),
@@ -2377,8 +2625,7 @@ assign wgRfOut=wgRfout_f;
     RXPROC s1LocalRxProc(
         .clk160m_i(clk160m),
         .rxData_i(s1LocalRxIn_f),
-        //.rxData_i(s1EmuRxDataBuf[3][31]),
-        //.rxData_i(s1RxBit),
+        .chkId_i(2'b11),
         .rxClk4m_o(s1LocalRxClk4m_w),
         .rxPack_o(s1LocalRxPack_w),  //1us high
         .rxData0_ob(s1LocalRxData0_wb),
@@ -2498,7 +2745,7 @@ assign wgRfOut=wgRfout_f;
     )OBUFDS_inst0 (
         .O(dfOutP[0]),        
         .OB(dfOutN[0]),
-        .I(wgClk_f)        
+        .I(wgClk_of)        
     );
     //
     OBUFDS #(
@@ -2507,7 +2754,7 @@ assign wgRfOut=wgRfout_f;
     ) OBUFDS_inst1 (
         .O(dfOutP[1]),        
         .OB(dfOutN[1]),       
-        .I(wgDataBit_f)       
+        .I(wgDataBit_of)       
     );
     //  
     OBUFDS #(
@@ -2516,7 +2763,7 @@ assign wgRfOut=wgRfout_f;
     ) OBUFDS_inst2 (
         .O(dfOutP[2]),  
         .OB(dfOutN[2]), 
-        .I(wgTrig_f) 
+        .I(wgTrig_of) 
     );
     //
     OBUFDS #(
@@ -2525,7 +2772,7 @@ assign wgRfOut=wgRfout_f;
     ) OBUFDS_inst3 (
         .O(dfOutP[3]),        
         .OB(dfOutN[3]),       
-        .I(wgRfout_f)      
+        .I(wgRfout_of)      
     );
     //
     OBUFDS #(

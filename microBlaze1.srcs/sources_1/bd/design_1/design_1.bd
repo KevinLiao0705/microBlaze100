@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0xAD9809A631A65620",
+      "boundary_crc": "0xD8D7864744E9D9C1",
       "device": "xc7a100tlfgg484-2L",
       "gen_directory": "../../../../microBlaze1.gen/sources_1/bd/design_1",
       "name": "design_1",
@@ -188,13 +188,13 @@
         "left": "9",
         "right": "0"
       },
-      "hdfioA": {
-        "direction": "IO",
-        "left": "13",
-        "right": "0"
-      },
       "wgRfOut": {
         "direction": "O"
+      },
+      "hdfioA": {
+        "direction": "IO",
+        "left": "19",
+        "right": "0"
       }
     },
     "components": {
@@ -2178,8 +2178,8 @@
             "right": "0"
           },
           "hdfioA": {
-            "direction": "I",
-            "left": "13",
+            "direction": "IO",
+            "left": "19",
             "right": "0"
           },
           "dfInP": {

@@ -23,6 +23,7 @@
 module RXSYSDATA1(
         input 					    clk160m_i,
         input                       rxData_i,
+        input[3:0]                  chkId_i,
         //==================================
         output                      rxClk4m_o,
         output                      rxPack_o,
@@ -32,7 +33,6 @@ module RXSYSDATA1(
         output [15:0]               rxData3_ob
     );
     
-
 
 
     reg[9:0] rxPackTime;
@@ -116,11 +116,13 @@ module RXSYSDATA1(
             if(rxClkHTime==5)
                 rxchk<=rxchk+rxd3;
 			if(rxClkHTime==9 && rxchk==rxd4)begin
-                rxPackTime<=0;
-                rxData0<=rxd0;
-                rxData1<=rxd1;
-                rxData2<=rxd2;
-                rxData3<=rxd3;
+			    if(rxData1[15:12]==chkId_i || chkId_i==4'b1110)begin 
+                    rxPackTime<=0;
+                    rxData0<=rxd0;
+                    rxData1<=rxd1;
+                    rxData2<=rxd2;
+                    rxData3<=rxd3;
+                end
             end	
 		end
 	end	 
