@@ -1,0 +1,90 @@
+16:36:18 DEBUG : Logs will be stored at 'D:/kevin/myCode/microBlaze100/moreFun/IDE.log'.
+16:36:19 INFO  : Registering command handlers for Vitis TCF services
+16:36:19 INFO  : Launching XSCT server: xsct.bat -n  -interactive D:\kevin\myCode\microBlaze100\moreFun\temp_xsdb_launch_script.tcl
+16:36:20 INFO  : Platform repository initialization has completed.
+16:36:21 INFO  : XSCT server has started successfully.
+16:36:23 INFO  : plnx-install-location is set to ''
+16:36:23 INFO  : Successfully done setting XSCT server connection channel  
+16:36:23 INFO  : Successfully done query RDI_DATADIR 
+16:36:23 INFO  : Successfully done setting workspace for the tool. 
+16:37:10 INFO  : Result from executing command 'getProjects': design_1_wrapper
+16:37:10 INFO  : Result from executing command 'getPlatforms': xilinx_vck190_base_202220_1|C:/Xilinx/Vitis/2022.2/base_platforms/xilinx_vck190_base_202220_1/xilinx_vck190_base_202220_1.xpfm;xilinx_vck190_base_dfx_202220_1|C:/Xilinx/Vitis/2022.2/base_platforms/xilinx_vck190_base_dfx_202220_1/xilinx_vck190_base_dfx_202220_1.xpfm;xilinx_vmk180_base_202220_1|C:/Xilinx/Vitis/2022.2/base_platforms/xilinx_vmk180_base_202220_1/xilinx_vmk180_base_202220_1.xpfm;xilinx_zcu102_base_202220_1|C:/Xilinx/Vitis/2022.2/base_platforms/xilinx_zcu102_base_202220_1/xilinx_zcu102_base_202220_1.xpfm;xilinx_zcu102_base_dfx_202220_1|C:/Xilinx/Vitis/2022.2/base_platforms/xilinx_zcu102_base_dfx_202220_1/xilinx_zcu102_base_dfx_202220_1.xpfm;xilinx_zcu104_base_202220_1|C:/Xilinx/Vitis/2022.2/base_platforms/xilinx_zcu104_base_202220_1/xilinx_zcu104_base_202220_1.xpfm
+16:37:11 WARN  : An unexpected exception occurred in the module 'platform project logging'
+16:37:12 INFO  : Platform 'design_1_wrapper' is added to custom repositories.
+16:37:14 INFO  : Platform 'design_1_wrapper' is added to custom repositories.
+16:38:52 INFO  : Hardware specification for platform project 'design_1_wrapper' is updated.
+16:39:03 INFO  : Result from executing command 'getProjects': design_1_wrapper
+16:39:03 INFO  : Result from executing command 'getPlatforms': design_1_wrapper|D:/kevin/myCode/microBlaze100/moreFun/design_1_wrapper/export/design_1_wrapper/design_1_wrapper.xpfm;xilinx_vck190_base_202220_1|C:/Xilinx/Vitis/2022.2/base_platforms/xilinx_vck190_base_202220_1/xilinx_vck190_base_202220_1.xpfm;xilinx_vck190_base_dfx_202220_1|C:/Xilinx/Vitis/2022.2/base_platforms/xilinx_vck190_base_dfx_202220_1/xilinx_vck190_base_dfx_202220_1.xpfm;xilinx_vmk180_base_202220_1|C:/Xilinx/Vitis/2022.2/base_platforms/xilinx_vmk180_base_202220_1/xilinx_vmk180_base_202220_1.xpfm;xilinx_zcu102_base_202220_1|C:/Xilinx/Vitis/2022.2/base_platforms/xilinx_zcu102_base_202220_1/xilinx_zcu102_base_202220_1.xpfm;xilinx_zcu102_base_dfx_202220_1|C:/Xilinx/Vitis/2022.2/base_platforms/xilinx_zcu102_base_dfx_202220_1/xilinx_zcu102_base_dfx_202220_1.xpfm;xilinx_zcu104_base_202220_1|C:/Xilinx/Vitis/2022.2/base_platforms/xilinx_zcu104_base_202220_1/xilinx_zcu104_base_202220_1.xpfm
+16:39:46 INFO  : Checking for BSP changes to sync application flags for project 'md100'...
+16:41:00 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+16:41:01 INFO  : Jtag cable 'Digilent JTAG-HS2 201706300081' is selected.
+16:41:01 INFO  : 'jtag frequency' command is executed.
+16:41:01 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent JTAG-HS2 201706300081" && level==0 && jtag_device_ctx=="jsn-JTAG-HS2-201706300081-13631093-0"}' command is executed.
+16:41:04 INFO  : Device configured successfully with "D:/kevin/myCode/microBlaze100/moreFun/md100/_ide/bitstream/design_1_wrapper.bit"
+16:41:04 INFO  : Context for processor 'microblaze_0' is selected.
+16:41:04 INFO  : Hardware design and registers information is loaded from 'D:/kevin/myCode/microBlaze100/moreFun/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa'.
+16:41:04 INFO  : 'configparams mdm-detect-bscan-mask 2' command is executed.
+16:41:04 INFO  : Context for processor 'microblaze_0' is selected.
+16:41:04 INFO  : System reset is completed.
+16:41:07 INFO  : 'after 3000' command is executed.
+16:41:07 INFO  : Context for processor 'microblaze_0' is selected.
+16:41:07 INFO  : The application 'D:/kevin/myCode/microBlaze100/moreFun/md100/Debug/md100.elf' is downloaded to processor 'microblaze_0'.
+16:41:07 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -filter {jtag_cable_name =~ "Digilent JTAG-HS2 201706300081" && level==0 && jtag_device_ctx=="jsn-JTAG-HS2-201706300081-13631093-0"}
+fpga -file D:/kevin/myCode/microBlaze100/moreFun/md100/_ide/bitstream/design_1_wrapper.bit
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+loadhw -hw D:/kevin/myCode/microBlaze100/moreFun/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa -regs
+configparams mdm-detect-bscan-mask 2
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+rst -system
+after 3000
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+dow D:/kevin/myCode/microBlaze100/moreFun/md100/Debug/md100.elf
+----------------End of Script----------------
+
+16:41:08 INFO  : Context for processor 'microblaze_0' is selected.
+16:41:08 INFO  : 'con' command is executed.
+16:41:08 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+con
+----------------End of Script----------------
+
+16:41:08 INFO  : Launch script is exported to file 'D:\kevin\myCode\microBlaze100\moreFun\md100_system\_ide\scripts\systemdebugger_md100_system_standalone.tcl'
+16:41:30 INFO  : Disconnected from the channel tcfchan#2.
+16:41:30 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+16:41:30 INFO  : Jtag cable 'Digilent JTAG-HS2 201706300081' is selected.
+16:41:30 INFO  : 'jtag frequency' command is executed.
+16:41:30 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent JTAG-HS2 201706300081" && level==0 && jtag_device_ctx=="jsn-JTAG-HS2-201706300081-13631093-0"}' command is executed.
+16:41:34 INFO  : Device configured successfully with "D:/kevin/myCode/microBlaze100/moreFun/md100/_ide/bitstream/design_1_wrapper.bit"
+16:41:34 INFO  : Context for processor 'microblaze_0' is selected.
+16:41:34 INFO  : Hardware design and registers information is loaded from 'D:/kevin/myCode/microBlaze100/moreFun/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa'.
+16:41:34 INFO  : 'configparams mdm-detect-bscan-mask 2' command is executed.
+16:41:34 INFO  : Context for processor 'microblaze_0' is selected.
+16:41:34 INFO  : System reset is completed.
+16:41:37 INFO  : 'after 3000' command is executed.
+16:41:37 INFO  : Context for processor 'microblaze_0' is selected.
+16:41:37 INFO  : The application 'D:/kevin/myCode/microBlaze100/moreFun/md100/Debug/md100.elf' is downloaded to processor 'microblaze_0'.
+16:41:37 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -filter {jtag_cable_name =~ "Digilent JTAG-HS2 201706300081" && level==0 && jtag_device_ctx=="jsn-JTAG-HS2-201706300081-13631093-0"}
+fpga -file D:/kevin/myCode/microBlaze100/moreFun/md100/_ide/bitstream/design_1_wrapper.bit
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+loadhw -hw D:/kevin/myCode/microBlaze100/moreFun/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa -regs
+configparams mdm-detect-bscan-mask 2
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+rst -system
+after 3000
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+dow D:/kevin/myCode/microBlaze100/moreFun/md100/Debug/md100.elf
+----------------End of Script----------------
+
+16:41:37 INFO  : Context for processor 'microblaze_0' is selected.
+16:41:37 INFO  : 'con' command is executed.
+16:41:37 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+con
+----------------End of Script----------------
+
+16:41:37 INFO  : Launch script is exported to file 'D:\kevin\myCode\microBlaze100\moreFun\md100_system\_ide\scripts\systemdebugger_md100_system_standalone.tcl'
+16:41:52 INFO  : Disconnected from the channel tcfchan#3.

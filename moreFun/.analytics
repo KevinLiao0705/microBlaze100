@@ -1,0 +1,6 @@
+timestamp=[2026-05-05 16:36:19], mode=WORKBENCH_START, duration=0:00:03.862, duration_ms=3862, data={}
+timestamp=[2026-05-05 16:36:19], mode=WORKBENCH_UI_INIT, duration=0:00:00.221, duration_ms=221, data={editors_count=0, platform_editors_count=0, projects_count=0, platform_projects_count=0, active_platform_editor=false, projects=}
+timestamp=[2026-05-05 16:36:20], mode=PLATFORM_REPOSITORY_INIT, duration=0:00:00.875, duration_ms=875, data={}
+timestamp=[2026-05-05 16:37:13], mode=APP_CREATION, duration=0:00:03.817, duration_ms=3817, data={name=md100, project_type=sdk, os=standalone, processor=microblaze, runtime=cpp, platform=design_1_wrapper, application_type=application}
+timestamp=[2026-05-05 16:39:03], mode=PLATFORM_GENERATION, duration=0:00:04.609, duration_ms=4609, data={name=design_1_wrapper}
+timestamp=[2026-05-05 16:39:48], mode=BUILD, duration=0:00:01.226, duration_ms=1226, data={name=md100, configuration=Debug, clean_build=false}
